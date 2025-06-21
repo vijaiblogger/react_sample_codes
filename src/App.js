@@ -14,6 +14,7 @@ import Members from './components/Members';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import Employee from './components/Employee';
+import PaginationExample   from './components/PaginationExample';
 //import ExportToExcel from './components/ExcelExport';
 import ExcelExport from './components/ExcelExport';
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -52,6 +53,8 @@ function App() {
           <NavLink to="/members" className="nav-link" activeClassName="active"><i class="bi bi-person-circle"></i> {collapsed ? '' : 'Members'}</NavLink>
           <NavLink to="/employee" className="nav-link" activeClassName="active"><i class="bi bi-person-circle"></i> {collapsed ? '' : 'Employee'}</NavLink>
           <NavLink to="/excelExport" className="nav-link" activeClassName="active"><i class="bi bi-person-circle"></i> {collapsed ? '' : 'Export Employee'}</NavLink>
+        <NavLink to="/paginationExample" className="nav-link" activeClassName="active"><i class="bi bi-person-circle"></i> {collapsed ? '' : 'Employee Pagination'}</NavLink>
+
        
         </Nav>
           </Col>
@@ -64,7 +67,8 @@ function App() {
             <Route path="/contactUs" element={<Contact />} />   
             <Route path="/aboutUs" element={<About />} />   
             <Route path="/employee" element={<Employee />} />   
-            <Route path="/excelExport" element={<ExcelExport />} />                    
+            <Route path="/excelExport" element={<ExcelExport />} />  
+            <Route path="/paginationExample" element={<PaginationExample />} />                    
           </Routes>
           </Col>
         </Row>
