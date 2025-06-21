@@ -8,7 +8,13 @@ import Contact from './components/Contact';
 import Services from './components/Services';
 import Projects from './components/Projects';
 import Settings from './components/Settings';
+import EmployeeSVJ from './services/userService';
 import Members from './components/Members';
+//import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
+import Employee from './components/Employee';
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
 function App() {
   const [collapsed, setCollapsed] = useState(false);
   return (
@@ -42,6 +48,7 @@ function App() {
           <NavLink to="/aboutUs" className="nav-link" activeClassName="active">⚙️ {collapsed ? '' : 'About Us'}</NavLink>
           <NavLink to="/contactUs" className="nav-link" activeClassName="active">⚙️ {collapsed ? '' : 'Contact Us'}</NavLink>
           <NavLink to="/members" className="nav-link" activeClassName="active">⚙️ {collapsed ? '' : 'Members'}</NavLink>
+          <NavLink to="/Employee" className="nav-link" activeClassName="active">⚙️ {collapsed ? '' : 'Employee'}</NavLink>
         </Nav>
           </Col>
           {/* Main Content */}
@@ -52,7 +59,10 @@ function App() {
             <Route path="/settings" element={<Settings />} />   
              <Route path="/contactUs" element={<Contact />} />   
               <Route path="/aboutUs" element={<About />} />   
-              <Route path="/members" element={<Members />} />          
+              <Route path="/Employee" element={<Employee />} />   
+              
+              {/* <Route path="/Members" element={<Members />} />    */}
+                    
           </Routes>
           </Col>
         </Row>
