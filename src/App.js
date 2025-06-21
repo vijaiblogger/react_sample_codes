@@ -8,6 +8,7 @@ import Contact from './components/Contact';
 import Services from './components/Services';
 import Projects from './components/Projects';
 import Settings from './components/Settings';
+import Members from './components/Members';
 function App() {
   const [collapsed, setCollapsed] = useState(false);
   return (
@@ -40,6 +41,7 @@ function App() {
           <NavLink to="/settings" className="nav-link" activeClassName="active">⚙️ {collapsed ? '' : 'Settings'}</NavLink>
           <NavLink to="/aboutUs" className="nav-link" activeClassName="active">⚙️ {collapsed ? '' : 'About Us'}</NavLink>
           <NavLink to="/contactUs" className="nav-link" activeClassName="active">⚙️ {collapsed ? '' : 'Contact Us'}</NavLink>
+          <NavLink to="/members" className="nav-link" activeClassName="active">⚙️ {collapsed ? '' : 'Members'}</NavLink>
         </Nav>
           </Col>
           {/* Main Content */}
@@ -49,7 +51,8 @@ function App() {
             <Route path="/projects" element={<Projects />} />
             <Route path="/settings" element={<Settings />} />   
              <Route path="/contactUs" element={<Contact />} />   
-              <Route path="/aboutUs" element={<About />} />           
+              <Route path="/aboutUs" element={<About />} />   
+              <Route path="/members" element={<Members />} />          
           </Routes>
           </Col>
         </Row>

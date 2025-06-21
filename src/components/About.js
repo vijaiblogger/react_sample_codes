@@ -7,7 +7,7 @@ export default function About() {
     <div class="container">
       <div class="row align-items-center">
         <div class="col-md-6">
-          <img src="/pexels-pixabay-220769.jpg"  style={{width:"600px" , height:"300px"}} class="img-fluid rounded" alt="About Image"></img>
+          <img src="/pexels-pixabay-220769.jpg"  style={{width:"600px" , height:"180px"}} class="img-fluid rounded" alt="About Image"></img>
         </div>
         <div class="col-md-6">
           <h2>Our Mission</h2>

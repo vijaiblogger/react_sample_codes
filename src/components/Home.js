@@ -43,7 +43,7 @@ export default function Home() {
           <h2 className="text-center mb-4">About Us</h2>
           <div className="row align-items-center">
             <div className="col-md-6">
-              <img src="/pexels-high-rollick-studio-553091901-16845100.jpg" style={{width:"500px", height:"300px"}} alt="About" className="img-fluid rounded" />
+              <img src="/pexels-high-rollick-studio-553091901-16845100.jpg" style={{width:"500px", height:"187px"}} alt="About" className="img-fluid rounded" />
             </div>
             <div className="col-md-6">
               <p>We are a team of developers and designers passionate about building high-quality websites with modern technologies. Our mission is to simplify web development through elegant and reusable components.</p>
