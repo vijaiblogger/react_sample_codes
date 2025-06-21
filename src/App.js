@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Navbar, Nav, Button, Container, Row, Col } from 'react-bootstrap';
-
+import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
+import Home from './components/Home';
+import About from './components/About';
+import Contact from './components/Contact';
+import Services from './components/Services';
+import Projects from './components/Projects';
+import Settings from './components/Settings';
 function App() {
   const [collapsed, setCollapsed] = useState(false);
   return (
@@ -14,7 +20,9 @@ function App() {
         <Navbar.Brand className="ms-3">Welcome to Vijai CodingMania.com</Navbar.Brand>
       </Navbar>
 
+
       {/* Main Body */}
+          <Router>
       <Container fluid className="flex-grow-1">
         <Row className="h-100">
           {/* Left Sidebar */}
@@ -25,20 +33,28 @@ function App() {
             }`}
             style={{ transition: 'width 0.3s' }}
           >
-            <Nav className="flex-column pt-3">
-              <Nav.Link href="#">🏠 {collapsed ? '' : 'Home'}</Nav.Link>
-              <Nav.Link href="#">📁 {collapsed ? '' : 'Projects'}</Nav.Link>
-              <Nav.Link href="#">⚙️ {collapsed ? '' : 'Settings'}</Nav.Link>
-            </Nav>
+            
+          <Nav className="flex-column pt-3" >
+          <NavLink to="/" end className="nav-link" activeClassName="active">🏠 {collapsed ? '' : 'Home'}</NavLink>
+          <NavLink to="/projects" className="nav-link" activeClassName="active">📁 {collapsed ? '' : 'Projects'}</NavLink>
+          <NavLink to="/settings" className="nav-link" activeClassName="active">⚙️ {collapsed ? '' : 'Settings'}</NavLink>
+          <NavLink to="/aboutUs" className="nav-link" activeClassName="active">⚙️ {collapsed ? '' : 'About Us'}</NavLink>
+          <NavLink to="/contactUs" className="nav-link" activeClassName="active">⚙️ {collapsed ? '' : 'Contact Us'}</NavLink>
+        </Nav>
           </Col>
-
           {/* Main Content */}
           <Col className="p-4">
-            <h2>Welcome</h2>
-            <p>This is the main content area. You can add more components here.</p>
+          <Routes>            
+            <Route path="/" element={<Home />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/settings" element={<Settings />} />   
+             <Route path="/contactUs" element={<Contact />} />   
+              <Route path="/aboutUs" element={<About />} />           
+          </Routes>
           </Col>
         </Row>
       </Container>
+      </Router>
 
       {/* Footer */}
       <footer className="bg-dark text-light text-center py-2">
