@@ -4,7 +4,6 @@ import { Navbar, Nav, Button, Container, Row, Col } from 'react-bootstrap';
 
 function App() {
   const [collapsed, setCollapsed] = useState(false);
-
   return (
     <div className="d-flex flex-column vh-100">
       {/* Header */}
