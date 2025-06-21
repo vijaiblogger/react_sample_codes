@@ -6,7 +6,7 @@ function App() {
   const [collapsed, setCollapsed] = useState(false);
   return (
     <div className="d-flex flex-column vh-100">
-      {/* Header */}
+      {/* Header test */}
       <Navbar bg="dark" variant="dark" className="px-3">
         <Button variant="outline-light" onClick={() => setCollapsed(!collapsed)}>
           ☰
