@@ -26,16 +26,16 @@ const ExcelExport = () => {
   };
 
   return (
-    <div className="container mt-4">
+    <div className="container">
       <h3>Export Employee List</h3>
-      <div className="container mt-5">
+      <div>
       
       <table className="table table-bordered table-striped">
         <thead className="thead-dark">
           <tr>
-            <th>Name</th>
-            <th>Age</th>
-            <th>Email</th>           
+            <th style={{ backgroundColor: '#007bff', color: 'white' }}>Name</th>
+            <th style={{ backgroundColor: '#007bff', color: 'white' }}>Age</th>
+            <th style={{ backgroundColor: '#007bff', color: 'white' }}>Email</th>           
           </tr>
         </thead>
         <tbody>
@@ -50,11 +50,11 @@ const ExcelExport = () => {
            <tr >
               <td></td>
               <td></td>
-              <td>
-              <button className="btn btn-success" onClick={exportToExcel}>
+              <td>              
+              <button className="bi bi-file-earmark-excel-fill" onClick={exportToExcel}>
               Export to Excel
               </button>
-       </td>
+             </td>
              
             </tr>
         </tbody>
