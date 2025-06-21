@@ -46,9 +46,9 @@ function App() {
           <NavLink to="/projects" className="nav-link" activeClassName="active">📁 {collapsed ? '' : 'Projects'}</NavLink>
           <NavLink to="/settings" className="nav-link" activeClassName="active">⚙️ {collapsed ? '' : 'Settings'}</NavLink>
           <NavLink to="/aboutUs" className="nav-link" activeClassName="active">⚙️ {collapsed ? '' : 'About Us'}</NavLink>
-          <NavLink to="/contactUs" className="nav-link" activeClassName="active">⚙️ {collapsed ? '' : 'Contact Us'}</NavLink>
-          <NavLink to="/members" className="nav-link" activeClassName="active">⚙️ {collapsed ? '' : 'Members'}</NavLink>
-          <NavLink to="/Employee" className="nav-link" activeClassName="active">⚙️ {collapsed ? '' : 'Employee'}</NavLink>
+          <NavLink to="/contactUs" className="nav-link" activeClassName="active"> <i className="bi bi-telephone-fill me-2"></i> {collapsed ? '' : 'Contact Us'}</NavLink>
+          <NavLink to="/members" className="nav-link" activeClassName="active"><i class="bi bi-person-circle"></i> {collapsed ? '' : 'Members'}</NavLink>
+          <NavLink to="/Employee" className="nav-link" activeClassName="active"><i class="bi bi-person-circle"></i> {collapsed ? '' : 'Employee'}</NavLink>
         </Nav>
           </Col>
           {/* Main Content */}
