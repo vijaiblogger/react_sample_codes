@@ -16,18 +16,19 @@ const Members = () => {
         <thead className="thead-dark">
           <tr>
             <th>ID</th>
-            <th>Post ID</th>
-            <th>User Id</th>
-            <th>User comment</th>
+            <th>Name</th>
+            <th>Email Id</th>
+            <th>User Role</th>
           </tr>
         </thead>
         <tbody>
           {members.map(member => (
             <tr key={member.id}>
-              <td>{member.postId}</td>
-              <td>{member.userId}</td>
-              <td>{member.comment}</td>
-              {/* <td>{member.role}</td> */}
+                <td>{member.id}</td>
+              <td>{member.name}</td>
+              <td>{member.email}</td>
+            
+              <td>{member.role}</td>
             </tr>
           ))}
         </tbody>

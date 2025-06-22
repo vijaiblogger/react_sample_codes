@@ -24,7 +24,7 @@ console.log(users);
             <th style={{width:"100px", backgroundColor: '#007bff', color: 'white'}}>Actions</th>
             <th  style={{ backgroundColor: '#007bff', color: 'white' }}>ID</th>
             <th  style={{ backgroundColor: '#007bff', color: 'white' }}>User Name</th>
-            <th  style={{ backgroundColor: '#007bff', color: 'white' }}>User User Name</th>
+            <th  style={{ backgroundColor: '#007bff', color: 'white' }}>User Name</th>
             <th  style={{ backgroundColor: '#007bff', color: 'white' }}>User Email</th>
           </tr>
         </thead>

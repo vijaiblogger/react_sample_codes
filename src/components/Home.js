@@ -5,7 +5,7 @@ export default function Home() {
     <>
     
       {/* Features Section */}
-      <section id="features" className="py-5">
+      <section id="features" className="mb-2">
         <div className="container">
           <h2 className="text-center mb-5">Our Features</h2>
           <div className="row g-4">

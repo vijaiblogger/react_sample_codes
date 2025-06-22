@@ -16,6 +16,8 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import Employee from './components/Employee';
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
 function App() {
+
+  
   const [collapsed, setCollapsed] = useState(false);
   return (
     <div className="d-flex flex-column vh-100">
@@ -42,10 +44,10 @@ function App() {
           >
             
           <Nav className="flex-column pt-3" >
-          <NavLink to="/" end className="nav-link" activeClassName="active">🏠 {collapsed ? '' : 'Home'}</NavLink>
-          <NavLink to="/projects" className="nav-link" activeClassName="active">📁 {collapsed ? '' : 'Projects'}</NavLink>
+          <NavLink to="/" end className="nav-link" activeClassName="active"><i className="bi bi-house-door-fill me-2"></i>{collapsed ? '' : 'Home'}</NavLink>
+          <NavLink to="/projects" className="nav-link" activeClassName="active"> <i className="bi bi-file-earmark-code me-2"></i>{collapsed ? '' : 'Projects'}</NavLink>
           <NavLink to="/settings" className="nav-link" activeClassName="active">⚙️ {collapsed ? '' : 'Settings'}</NavLink>
-          <NavLink to="/aboutUs" className="nav-link" activeClassName="active">⚙️ {collapsed ? '' : 'About Us'}</NavLink>
+          <NavLink to="/aboutUs" className="nav-link" activeClassName="active"><i className="bi bi-info-circle-fill"></i>  {collapsed ? '' : 'About Us'}</NavLink>
           <NavLink to="/contactUs" className="nav-link" activeClassName="active"> <i className="bi bi-telephone-fill me-2"></i> {collapsed ? '' : 'Contact Us'}</NavLink>
           <NavLink to="/members" className="nav-link" activeClassName="active"><i class="bi bi-person-circle"></i> {collapsed ? '' : 'Members'}</NavLink>
           <NavLink to="/Employee" className="nav-link" activeClassName="active"><i class="bi bi-person-circle"></i> {collapsed ? '' : 'Employee'}</NavLink>
@@ -61,7 +63,7 @@ function App() {
               <Route path="/aboutUs" element={<About />} />   
               <Route path="/Employee" element={<Employee />} />   
               
-              {/* <Route path="/Members" element={<Members />} />    */}
+              <Route path="/Members" element={<Members />} />   
                     
           </Routes>
           </Col>
