@@ -5,12 +5,11 @@ import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-do
 import Home from './components/Home';
 import About from './components/About';
 import Contact from './components/Contact';
-import Services from './components/Services';
 import Projects from './components/Projects';
 import Settings from './components/Settings';
 import EmployeeSVJ from './services/userService';
 import Members from './components/Members';
-//import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import Employee from './components/Employee';
@@ -43,7 +42,7 @@ function App() {
             style={{ transition: 'width 0.3s' }}
           >
             
-          <Nav className="flex-column pt-3" >
+        <Nav className="flex-column pt-3" >
           <NavLink to="/" end className="nav-link" activeClassName="active"><i className="bi bi-house-door-fill me-2"></i>{collapsed ? '' : 'Home'}</NavLink>
           <NavLink to="/projects" className="nav-link" activeClassName="active"> <i className="bi bi-file-earmark-code me-2"></i>{collapsed ? '' : 'Projects'}</NavLink>
           <NavLink to="/settings" className="nav-link" activeClassName="active">⚙️ {collapsed ? '' : 'Settings'}</NavLink>
@@ -59,11 +58,10 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/settings" element={<Settings />} />   
-             <Route path="/contactUs" element={<Contact />} />   
-              <Route path="/aboutUs" element={<About />} />   
-              <Route path="/Employee" element={<Employee />} />   
-              
-              <Route path="/Members" element={<Members />} />   
+            <Route path="/contactUs" element={<Contact />} />   
+            <Route path="/aboutUs" element={<About />} />   
+            <Route path="/Employee" element={<Employee />} />   
+            <Route path="/Members" element={<Members />} />
                     
           </Routes>
           </Col>

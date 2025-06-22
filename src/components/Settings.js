@@ -1,11 +1,20 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 
 export default function Settings() {
+   const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    if (darkMode) {
+      document.body.classList.add('bg-dark', 'text-white');
+    } else {
+      document.body.classList.remove('bg-dark', 'text-white');
+    }
+  }, [darkMode]);
   
   return (
    <>
-       <div className="container py-5">
-      <h2 className="mb-4">Account Settings</h2>
+       <div className="container py-3">
+      <h2 className="mb-2 text-center">Account Settings</h2>
       
       <form>
         {/* User Info */}
@@ -59,6 +68,8 @@ export default function Settings() {
             className="form-check-input"
             type="checkbox"
             id="darkMode"
+            checked={darkMode}
+            onChange={() => setDarkMode(!darkMode)}
           />
           <label className="form-check-label" htmlFor="darkMode">
             Enable Dark Mode

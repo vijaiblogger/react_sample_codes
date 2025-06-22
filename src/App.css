@@ -13,6 +13,11 @@
   }
 }
 
+.dark-mode {
+  background-color: #121212 !important;
+  color: white !important;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;

@@ -10,8 +10,8 @@ const members = [
 
 const Members = () => {
   return (
-    <div className="container mt-5">
-      <h2 className="mb-4">Member List</h2>
+    <div className="container my-2">
+      <h2 className="mb-4 text-center">Member List</h2>
       <table className="table table-bordered table-striped">
         <thead className="thead-dark">
           <tr>
