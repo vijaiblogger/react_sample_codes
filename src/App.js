@@ -12,7 +12,9 @@ import Members from './components/Members';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import './globaltheme/blue.css';
 import Employee from './components/Employee';
+import Pgtest from './components/Pgtest';
 import PaginationExample   from './components/PaginationExample';
 //import ExportToExcel from './components/ExcelExport';
 import ExcelExport from './components/ExcelExport';
@@ -55,7 +57,7 @@ function App() {
           <NavLink to="/employee" className="nav-link" activeClassName="active"><i class="bi bi-person-circle"></i> {collapsed ? '' : 'Employee'}</NavLink>
           <NavLink to="/excelExport" className="nav-link" activeClassName="active"><i class="bi bi-person-circle"></i> {collapsed ? '' : 'Export Employee'}</NavLink>
         <NavLink to="/paginationExample" className="nav-link" activeClassName="active"><i class="bi bi-person-circle"></i> {collapsed ? '' : 'Employee Pagination'}</NavLink>
-
+       <NavLink to="/pgtest" className="nav-link" activeClassName="active"><i class="bi bi-person-circle"></i> {collapsed ? '' : ' pgtest'}</NavLink>
        
         </Nav>
           </Col>
@@ -67,9 +69,12 @@ function App() {
             <Route path="/settings" element={<Settings />} />   
             <Route path="/contactUs" element={<Contact />} />   
             <Route path="/aboutUs" element={<About />} />   
-            <Route path="/employee" element={<Employee />} />   
+             <Route path="/employee" element={<Employee />} />   
+            <Route path="/members" element={<Members />} />   
             <Route path="/excelExport" element={<ExcelExport />} />  
-            <Route path="/paginationExample" element={<PaginationExample />} />                    
+            <Route path="/paginationExample" element={<PaginationExample />} /> 
+             <Route path="/pgtest" element={<Pgtest />} />   
+                             
           </Routes>
           </Col>
         </Row>

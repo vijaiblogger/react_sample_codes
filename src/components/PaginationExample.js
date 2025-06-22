@@ -1,7 +1,102 @@
 import React, { useState } from "react";
 
 const PaginationExample = () => {
-  const items = Array.from({ length: 50 }, (_, i) => `Item ${i + 1}`);
+  //const items = Array.from({ length: 50 }, (_, i) => `Item ${i + 1}`);
+
+  const items=[
+  {
+    "id": 1,
+    "name": "Alice Johnson",
+    "age": 30,
+    "position": "Software Engineer",
+    "department": "Development",
+    "email": "alice.johnson@example.com",
+    "phone": "123-456-7890"
+  },
+  {
+    "id": 2,
+    "name": "Bob Smith",
+    "age": 35,
+    "position": "Project Manager",
+    "department": "Management",
+    "email": "bob.smith@example.com",
+    "phone": "234-567-8901"
+  },
+  {
+    "id": 3,
+    "name": "Catherine Lee",
+    "age": 28,
+    "position": "UI/UX Designer",
+    "department": "Design",
+    "email": "catherine.lee@example.com",
+    "phone": "345-678-9012"
+  },
+  {
+    "id": 4,
+    "name": "David Kumar",
+    "age": 40,
+    "position": "QA Analyst",
+    "department": "Quality Assurance",
+    "email": "david.kumar@example.com",
+    "phone": "456-789-0123"
+  },
+  {
+    "id": 5,
+    "name": "Emily Chen",
+    "age": 32,
+    "position": "DevOps Engineer",
+    "department": "Infrastructure",
+    "email": "emily.chen@example.com",
+    "phone": "567-890-1234"
+  },
+  {
+    "id": 1,
+    "name": "Alice Johnson",
+    "age": 30,
+    "position": "Software Engineer",
+    "department": "Development",
+    "email": "alice.johnson@example.com",
+    "phone": "123-456-7890"
+  },
+  {
+    "id": 2,
+    "name": "Bob Smith",
+    "age": 35,
+    "position": "Project Manager",
+    "department": "Management",
+    "email": "bob.smith@example.com",
+    "phone": "234-567-8901"
+  },
+  {
+    "id": 3,
+    "name": "Catherine Lee",
+    "age": 28,
+    "position": "UI/UX Designer",
+    "department": "Design",
+    "email": "catherine.lee@example.com",
+    "phone": "345-678-9012"
+  },
+  {
+    "id": 4,
+    "name": "David Kuddmar",
+    "age": 40,
+    "position": "QA Analyst",
+    "department": "Qualdddity Assurance",
+    "email": "david.kumar@example.com",
+    "phone": "456-7dd89-0123"
+  },
+  {
+    "id": 5,
+    "name": "Emidddly Chen",
+    "age": 32,
+    "position": "DedddvOps Engineer",
+    "department": "Indddfrastructure",
+    "email": "emily.cheddn@example.com",
+    "phone": "567-890ddd-1234"
+  }
+];
+
+
   const itemsPerPage = 5;
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -37,7 +132,7 @@ const PaginationExample = () => {
       <ul className="list-group mb-3">
         {currentItems.map((item, index) => (
           <li key={index} className="list-group-item">
-            {item}
+            {item.name}
           </li>
         ))}
       </ul>

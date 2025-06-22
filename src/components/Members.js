@@ -1,5 +1,6 @@
 
 import React from 'react';
+import UtilExportToExcel from '../util/UtilExportToExcel';
 
 // Sample data - Replace this with real API data or props
 const members = [
@@ -10,6 +11,7 @@ const members = [
 
 const Members = () => {
   return (
+     <>
     <div className="container my-2">
       <h2 className="mb-4 text-center">Member List</h2>
       <table className="table table-bordered table-striped">
@@ -34,6 +36,9 @@ const Members = () => {
         </tbody>
       </table>
     </div>
+<UtilExportToExcel data={members} />
+
+    </>
   );
 };
 

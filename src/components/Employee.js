@@ -1,6 +1,9 @@
     import React, { useEffect, useState } from 'react';
     import { fetchUsers } from '../services/userService';
-
+    import UtilExportToExcel from '../util/UtilExportToExcel';
+    import UtilDataPagination from '../util/UtilDataPagination';
+    import UtilDataPaginations from '../util/UtilDataPaginations';
+    
     function Employee() {
       const [users, setUsers] = useState([]);
       const [error, setError] = useState('');
@@ -11,9 +14,12 @@
           .catch(err => setError(err.message));
       }, []);
 
+      const filterUserData = users.map(({ id, name,username,email,age,phone,website }) => ({ id, name,username,email,age,phone,website }));
+
       const handleEdit = (user) => {
         alert(`Editing user: ${user.name} (ID: ${user.id})`);
       };
+
 
       const handleDelete = (id) => {
         // Filter out the deleted user from state
@@ -27,45 +33,10 @@
       if (users.length === 0) return <div>Loading...</div>;
 
       return (
-        <div className="container">
-          <h2 className="mb-4 text-center">Employee List</h2>
-          <table className="table table-bordered table-striped">
-            <thead className="bg-primary text-white">
-              <tr >
-                <th style={{ backgroundColor: '#007bff', color: 'white', width: "100px"  }}>Actions</th>
-                <th style={{ backgroundColor: '#007bff', color: 'white' }}>ID</th>
-                <th style={{ backgroundColor: '#007bff', color: 'white' }}>Full Name</th>
-                <th style={{ backgroundColor: '#007bff', color: 'white' }}>Username</th>
-                <th style={{ backgroundColor: '#007bff', color: 'white' }}>Email</th>
-              </tr>
-            </thead>
-            <tbody>
-              {users.map(member => (
-                <tr key={member.id}>
-                  <td>
-                    <div>
-                      <button
-                        className="btn btn-sm btn-outline-primary me-2"
-                        onClick={() => handleEdit(member)}
-                      >
-                        <i className="bi bi-pencil"></i>
-                      </button>
-                      <button
-                        className="btn btn-sm btn-outline-danger"
-                        onClick={() => handleDelete(member.id)}
-                      >
-                        <i className="bi bi-trash"></i>
-                      </button>
-                    </div>
-                  </td>
-                  <td>{member.id}</td>
-                  <td>{member.name}</td>
-                  <td>{member.username}</td>
-                  <td>{member.email}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <div className="container">         
+          {/* <UtilDataPagination data={filterUserData} headerdata="Users List" itemsPerPage={5} /> */}
+         <UtilDataPaginations />
+          <UtilExportToExcel data={users} />
         </div>
       );
     }

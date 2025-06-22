@@ -1,0 +1,18 @@
+
+/* MyComponent.css */
+.container {
+  padding: 20px;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+}
+
+.title {
+  color: #333;
+  font-size: 24px;
+}
+
+.table_header_background_color
+{
+    background-color:#00ff66 !important ;  
+     color: white !important;    
+}
