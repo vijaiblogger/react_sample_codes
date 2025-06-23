@@ -6,6 +6,10 @@
    color: #333;
   border: 1px solid #ccc;
 }
+.menubar_background_color
+{  
+    background-color: #e9ecef;
+}
 
 .title {
   color: #333;

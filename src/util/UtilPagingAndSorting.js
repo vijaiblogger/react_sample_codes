@@ -1,16 +1,11 @@
           import React, { useState } from "react";
           import "bootstrap/dist/css/bootstrap.min.css";
-          import 'bootstrap-icons/font/bootstrap-icons.css';
-         
+          import 'bootstrap-icons/font/bootstrap-icons.css';         
 
-          const UtilPagingAndSorting = ({ data, itemsPerPage = 5 }) => {
+          const UtilPagingAndSorting = ({ data, itemsPerPage = 5,displayMenubar=false }) => {          
             const [currentPage, setCurrentPage] = useState(1);
             const [sortField, setSortField] = useState(null);
             const [sortOrder, setSortOrder] = useState("asc");
-             const [displayMenubar, setDisplayMenubar] = useState(false);
-             
-            
-
             // 🔁 Sort data
             const sortedData = [...data].sort((a, b) => {
               if (!sortField) return 0;
@@ -77,8 +72,8 @@
             return (
               <>
                    
-                 {!displayMenubar ? 
-                <div id="menubar"  className="container">               
+                 {displayMenubar ? 
+                <div id="menubar"  className="container menubar_background_color">               
                 <div className=" justify-content-end d-flex gap-2">
                   <button className="btn btn-outline-primary" onClick={handleEdit}>
                     <i className="bi bi-pencil-fill me-1"></i> Edit
