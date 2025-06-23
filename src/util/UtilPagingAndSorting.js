@@ -7,6 +7,8 @@
             const [currentPage, setCurrentPage] = useState(1);
             const [sortField, setSortField] = useState(null);
             const [sortOrder, setSortOrder] = useState("asc");
+             const [displayMenubar, setDisplayMenubar] = useState(false);
+             
             
 
             // 🔁 Sort data
@@ -75,9 +77,8 @@
             return (
               <>
                    
-                       
-                <div id="menubar" style={{display:"none"}} className="container"> 
-               
+                 {!displayMenubar ? 
+                <div id="menubar"  className="container">               
                 <div className=" justify-content-end d-flex gap-2">
                   <button className="btn btn-outline-primary" onClick={handleEdit}>
                     <i className="bi bi-pencil-fill me-1"></i> Edit
@@ -87,6 +88,7 @@
                   </button>
                </div>
               </div> 
+              : <p></p>}  
 
 
               <div className="container mt-4">
