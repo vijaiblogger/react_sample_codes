@@ -28,6 +28,7 @@ const UtilDataPaginations = (props) => {
 const allKeys = getLeafPropertyNames(items);
 
   return (
+    <>
     <div className="container mt-4">
       <h3 className="mb-3">{headerdata}</h3>
       <table className="table table-bordered table-striped">
@@ -46,7 +47,12 @@ const allKeys = getLeafPropertyNames(items);
             {allKeys.map((item, index) => (
               <td key={index} >
                     {itemr[item]}
+                    
               </td>
+              
+                        
+                    
+                    
             ))}
           </tr>
         ))} 
@@ -68,7 +74,7 @@ const allKeys = getLeafPropertyNames(items);
           ))}
         </ul>
       </nav>
-    </div>
+    </div></>
   );
 };
 

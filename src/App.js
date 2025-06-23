@@ -18,6 +18,7 @@ import Pgtest from './components/Pgtest';
 import PaginationExample   from './components/PaginationExample';
 //import ExportToExcel from './components/ExcelExport';
 import ExcelExport from './components/ExcelExport';
+import PopupEditDelete from './util/PopupEditDelete';
 
 // import UtilPagingAndSorting from './util/UtilPagingAndSorting';
 import UtilPagingAndSorting from './util/UtilPagingAndSorting';
@@ -61,6 +62,7 @@ function App(props) {
           <NavLink to="/employee" className="nav-link" activeClassName="active"><i class="bi bi-person-circle"></i> {collapsed ? '' : 'Employee'}</NavLink>
           <NavLink to="/excelExport" className="nav-link" activeClassName="active"><i class="bi bi-person-circle"></i> {collapsed ? '' : 'Export Employee'}</NavLink>
         <NavLink to="/paginationExample" className="nav-link" activeClassName="active"><i class="bi bi-person-circle"></i> {collapsed ? '' : 'Employee Pagination'}</NavLink>
+        <NavLink to="/PopupEditDelete" className="nav-link" activeClassName="active"><i class="bi bi-person-circle"></i> {collapsed ? '' : ' PopupEditDelete'}</NavLink>
        <NavLink to="/pgtest" className="nav-link" activeClassName="active"><i class="bi bi-person-circle"></i> {collapsed ? '' : ' pgtest'}</NavLink>
        {/* <NavLink to="/utilPagingAndSorting" className="nav-link" activeClassName="active"><i class="bi bi-person-circle"></i> {collapsed ? '' : ' UtilPagingAndSorting'}</NavLink> */}
        
@@ -78,10 +80,11 @@ function App(props) {
             <Route path="/members" element={<Members />} />   
             <Route path="/excelExport" element={<ExcelExport />} />  
             <Route path="/paginationExample" element={<PaginationExample />} /> 
-            <Route path="/pgtest" element={<Pgtest />} />   
+            <Route path="/pgtest" element={<Pgtest />} />  
+            <Route path="/popupEditDelete" element={<PopupEditDelete />} />   
             {/* <Route path="/utilPagingAndSorting" element={<UtilPagingAndSorting data={props.users} itemsPerPage={4} />} />  */}
             
-                             
+                           
           </Routes>
           </Col>
         </Row>
