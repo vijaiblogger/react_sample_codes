@@ -36,7 +36,7 @@ import Pgtest from './Pgtest';
       return (
         <div className="container">         
           {/* <UtilDataPagination data={filterUserData} headerdata="Users List" itemsPerPage={5} /> */}
-          <UtilDataPaginations data={filterUserData} headerdata="Test  List" itemsPerPage={5} />
+          <UtilDataPaginations data={filterUserData} headerdata="Test  List" itemsPerPage={2} />
           
           {/* <UtilDataPaginations  /> */}
           <UtilExportToExcel data={users} />

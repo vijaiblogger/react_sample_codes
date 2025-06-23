@@ -29,11 +29,11 @@ const UtilDataPaginations = (props) => {
           </tr>
         </thead>
         <tbody>
-        {currentItem.map(member => (
-          <tr className=" mb-3" key={member.id}>
+        {currentItem.map(itemr => (
+            <tr className=" mb-3" key={itemr.id}>
             {allKeys.map((item, index) => (
               <td key={index} >
-              {member[item]}
+                    {itemr[item]}
               </td>
             ))}
           </tr>
