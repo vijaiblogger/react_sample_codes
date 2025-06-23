@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const employees = [
+const items = [
   { id: 1, name: "Alice", age: 30 },
   { id: 2, name: "Bob", age: 25 },
   { id: 3, name: "Charlie", age: 28 },
@@ -18,11 +18,11 @@ const itemsPerPage = 5;
 const Pgtest = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
-  const totalPages = Math.ceil(employees.length / itemsPerPage);
+  const totalPages = Math.ceil(items.length / itemsPerPage);
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentEmployees = employees.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItem = items.slice(indexOfFirstItem, indexOfLastItem);
 
   const handleClick = (pageNumber) => setCurrentPage(pageNumber);
 
@@ -38,7 +38,7 @@ const Pgtest = () => {
           </tr>
         </thead>
         <tbody>
-          {currentEmployees.map((emp) => (
+          {currentItem.map((emp) => (
             <tr key={emp.id}>
               <td>{emp.id}</td>
               <td>{emp.name}</td>

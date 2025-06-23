@@ -1,50 +1,43 @@
 import React, { useState } from "react";
-
-const employees = [
-  { id: 1, name: "Alice", age: 30 },
-  { id: 2, name: "Bob", age: 25 },
-  { id: 3, name: "Charlie", age: 28 },
-  { id: 4, name: "David", age: 35 },
-  { id: 5, name: "Eva", age: 31 },
-  { id: 6, name: "Frank", age: 40 },
-  { id: 7, name: "Grace", age: 29 },
-  { id: 8, name: "Helen", age: 33 },
-  { id: 9, name: "Ian", age: 36 },
-  { id: 10, name: "Jane", age: 27 }
-];
-
-const itemsPerPage = 5;
-
-const UtilDataPaginations = () => {
+const UtilDataPaginations = (props) => {
   const [currentPage, setCurrentPage] = useState(1);
-
-  const totalPages = Math.ceil(employees.length / itemsPerPage);
-
+  const [headerdata, setHeaderData] = useState(props.headerdata);  
+  const [items, setItems] = useState(props.data);
+  const [itemsPerPage, setitemsPerPage] = useState(props.itemsPerPage);
+  const totalPages = Math.ceil(items.length / itemsPerPage);
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentEmployees = employees.slice(indexOfFirstItem, indexOfLastItem);
-
+  const currentItem = items.slice(indexOfFirstItem, indexOfLastItem);
   const handleClick = (pageNumber) => setCurrentPage(pageNumber);
+
+  //get all columns for list
+  const allKeys = [
+  ...new Set(items.flatMap(emp => Object.keys(emp)))
+  ];
 
   return (
     <div className="container mt-4">
-      <h3 className="mb-3">Employee List</h3>
+      <h3 className="mb-3">{headerdata}</h3>
       <table className="table table-bordered table-striped">
         <thead className="thead-dark">
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Age</th>
+          <tr>                           
+            {allKeys.map((item, index) => (
+                <th className="table_header_background_color" key={index} >
+                  {item.toUpperCase()}
+                </th>
+              ))}
           </tr>
         </thead>
         <tbody>
-          {currentEmployees.map((emp) => (
-            <tr key={emp.id}>
-              <td>{emp.id}</td>
-              <td>{emp.name}</td>
-              <td>{emp.age}</td>
-            </tr>
-          ))}
+        {currentItem.map(member => (
+          <tr className=" mb-3" key={member.id}>
+            {allKeys.map((item, index) => (
+              <td key={index} >
+              {member[item]}
+              </td>
+            ))}
+          </tr>
+        ))} 
         </tbody>
       </table>
 

@@ -3,6 +3,7 @@
     import UtilExportToExcel from '../util/UtilExportToExcel';
     import UtilDataPagination from '../util/UtilDataPagination';
     import UtilDataPaginations from '../util/UtilDataPaginations';
+import Pgtest from './Pgtest';
     
     function Employee() {
       const [users, setUsers] = useState([]);
@@ -14,8 +15,8 @@
           .catch(err => setError(err.message));
       }, []);
 
-      const filterUserData = users.map(({ id, name,username,email,age,phone,website }) => ({ id, name,username,email,age,phone,website }));
-
+      const filterUserData = users.map(({ id, name,username }) => ({ id, name,username }));
+      
       const handleEdit = (user) => {
         alert(`Editing user: ${user.name} (ID: ${user.id})`);
       };
@@ -35,8 +36,11 @@
       return (
         <div className="container">         
           {/* <UtilDataPagination data={filterUserData} headerdata="Users List" itemsPerPage={5} /> */}
-         <UtilDataPaginations />
+          <UtilDataPaginations data={filterUserData} headerdata="Test  List" itemsPerPage={5} />
+          
+          {/* <UtilDataPaginations  /> */}
           <UtilExportToExcel data={users} />
+          {/* <Pgtest></Pgtest> */}
         </div>
       );
     }
