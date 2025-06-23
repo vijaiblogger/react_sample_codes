@@ -9,12 +9,23 @@ const UtilDataPaginations = (props) => {
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItem = items.slice(indexOfFirstItem, indexOfLastItem);
   const handleClick = (pageNumber) => setCurrentPage(pageNumber);
+  const getLeafPropertyNames = (list) => {
+  const keysSet = new Set();
 
-  //get all columns for list
-  const allKeys = [
-  ...new Set(items.flatMap(emp => Object.keys(emp)))
-  ];
-
+  list.forEach(item => {
+    Object.entries(item).forEach(([key, value]) => {
+      if (
+        value === null ||
+        typeof value !== 'object' || 
+        Array.isArray(value) === false && Object.keys(value).length === 0
+      ) {
+        keysSet.add(key);
+      }
+    });
+  });
+  return Array.from(keysSet);
+};
+const allKeys = getLeafPropertyNames(items);
   return (
     <div className="container mt-4">
       <h3 className="mb-3">{headerdata}</h3>

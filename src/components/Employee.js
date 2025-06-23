@@ -15,8 +15,6 @@ import Pgtest from './Pgtest';
           .catch(err => setError(err.message));
       }, []);
 
-      const filterUserData = users.map(({ id, name,username }) => ({ id, name,username }));
-      
       const handleEdit = (user) => {
         alert(`Editing user: ${user.name} (ID: ${user.id})`);
       };
@@ -35,12 +33,8 @@ import Pgtest from './Pgtest';
 
       return (
         <div className="container">         
-          {/* <UtilDataPagination data={filterUserData} headerdata="Users List" itemsPerPage={5} /> */}
-          <UtilDataPaginations data={filterUserData} headerdata="Test  List" itemsPerPage={2} />
-          
-          {/* <UtilDataPaginations  /> */}
-          <UtilExportToExcel data={users} />
-          {/* <Pgtest></Pgtest> */}
+         <UtilDataPaginations data={users} headerdata="Test  List" itemsPerPage={2} />
+          <UtilExportToExcel data={users} />         
         </div>
       );
     }
