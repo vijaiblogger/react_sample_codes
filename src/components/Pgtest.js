@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import UtilPagingAndSorting from "../util/UtilPagingAndSorting";
 const items = [
   { id: 1, name: "Alice", age: 30 },
   { id: 2, name: "Bob", age: 25 },
@@ -28,41 +28,8 @@ const Pgtest = () => {
 
   return (
     <div className="container mt-4">
-      <h3 className="mb-3">Employee List</h3>
-      <table className="table table-bordered table-striped">
-        <thead className="thead-dark">
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Age</th>
-          </tr>
-        </thead>
-        <tbody>
-          {currentItem.map((emp) => (
-            <tr key={emp.id}>
-              <td>{emp.id}</td>
-              <td>{emp.name}</td>
-              <td>{emp.age}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-
-      {/* Pagination Controls */}
-      <nav>
-        <ul className="pagination">
-          {Array.from({ length: totalPages }, (_, i) => i + 1).map((num) => (
-            <li
-              key={num}
-              className={`page-item ${currentPage === num ? "active" : ""}`}
-            >
-              <button className="page-link" onClick={() => handleClick(num)}>
-                {num}
-              </button>
-            </li>
-          ))}
-        </ul>
-      </nav>
+      <h3 className=" mb-3">Employee List</h3>
+     <UtilPagingAndSorting data={items}/>
     </div>
   );
 };

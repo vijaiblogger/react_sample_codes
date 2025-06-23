@@ -3,11 +3,15 @@
     import UtilExportToExcel from '../util/UtilExportToExcel';
     import UtilDataPagination from '../util/UtilDataPagination';
     import UtilDataPaginations from '../util/UtilDataPaginations';
-import Pgtest from './Pgtest';
+    import Pgtest from './Pgtest';
+    import UtilPagingAndSorting from '../util/UtilPagingAndSorting';
     
+
     function Employee() {
       const [users, setUsers] = useState([]);
-      const [error, setError] = useState('');
+        const [error, setError] = useState('');
+        //const filterUserData = users.map(({ id, name, username }) => ({ id, name, username }));
+
 
       useEffect(() => {
         fetchUsers()
@@ -33,8 +37,9 @@ import Pgtest from './Pgtest';
 
       return (
         <div className="container">         
-         <UtilDataPaginations data={users} headerdata="Test  List" itemsPerPage={2} />
-          <UtilExportToExcel data={users} />         
+              <UtilDataPaginations data={users} headerdata="Test  List" itemsPerPage={2} />
+          <UtilExportToExcel data={users} />    
+               
         </div>
       );
     }

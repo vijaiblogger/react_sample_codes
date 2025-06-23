@@ -51,7 +51,7 @@ const ExcelExport = () => {
               <td></td>
               <td></td>
               <td>              
-              <button className="bi bi-file-earmark-excel-fill" onClick={exportToExcel}>
+              <button className="bi bi-file-earmark-excel-fill bgcolor-primary"  onClick={exportToExcel}>
               Export to Excel
               </button>
              </td>

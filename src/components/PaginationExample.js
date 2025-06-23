@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import UtilPagingAndSorting from "../util/UtilPagingAndSorting";
 
 const PaginationExample = () => {
   //const items = Array.from({ length: 50 }, (_, i) => `Item ${i + 1}`);
@@ -50,7 +51,7 @@ const PaginationExample = () => {
     "phone": "567-890-1234"
   },
   {
-    "id": 1,
+    "id": 6,
     "name": "Alice Johnson",
     "age": 30,
     "position": "Software Engineer",
@@ -59,7 +60,7 @@ const PaginationExample = () => {
     "phone": "123-456-7890"
   },
   {
-    "id": 2,
+    "id": 7,
     "name": "Bob Smith",
     "age": 35,
     "position": "Project Manager",
@@ -68,7 +69,7 @@ const PaginationExample = () => {
     "phone": "234-567-8901"
   },
   {
-    "id": 3,
+    "id": 8,
     "name": "Catherine Lee",
     "age": 28,
     "position": "UI/UX Designer",
@@ -77,7 +78,7 @@ const PaginationExample = () => {
     "phone": "345-678-9012"
   },
   {
-    "id": 4,
+    "id": 9,
     "name": "David Kuddmar",
     "age": 40,
     "position": "QA Analyst",
@@ -86,7 +87,7 @@ const PaginationExample = () => {
     "phone": "456-7dd89-0123"
   },
   {
-    "id": 5,
+    "id": 10 ,
     "name": "Emidddly Chen",
     "age": 32,
     "position": "DedddvOps Engineer",
@@ -129,31 +130,8 @@ const PaginationExample = () => {
     <div className="container ">
       <h3 className="mb-3">Pagination Example</h3>
 
-      <ul className="list-group mb-3">
-        {currentItems.map((item, index) => (
-          <li key={index} className="list-group-item">
-            {item.name}
-          </li>
-        ))}
-      </ul>
-
-      <nav>
-        <ul className="pagination justify-content-center">
-          <li className={`page-item ${currentPage === 1 ? "disabled" : ""}`}>
-            <button className="page-link" onClick={() => paginate(currentPage - 1)}>
-              Previous
-            </button>
-          </li>
-
-          {renderPagination()}
-
-          <li className={`page-item ${currentPage === totalPages ? "disabled" : ""}`}>
-            <button className="page-link" onClick={() => paginate(currentPage + 1)}>
-              Next
-            </button>
-          </li>
-        </ul>
-      </nav>
+     
+      <UtilPagingAndSorting data={items}/>
     </div>
   );
 };

@@ -18,9 +18,13 @@ import Pgtest from './components/Pgtest';
 import PaginationExample   from './components/PaginationExample';
 //import ExportToExcel from './components/ExcelExport';
 import ExcelExport from './components/ExcelExport';
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-function App() {
 
+// import UtilPagingAndSorting from './util/UtilPagingAndSorting';
+import UtilPagingAndSorting from './util/UtilPagingAndSorting';
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+function App(props) {
+
+   
   
   const [collapsed, setCollapsed] = useState(false);
   return (
@@ -58,6 +62,7 @@ function App() {
           <NavLink to="/excelExport" className="nav-link" activeClassName="active"><i class="bi bi-person-circle"></i> {collapsed ? '' : 'Export Employee'}</NavLink>
         <NavLink to="/paginationExample" className="nav-link" activeClassName="active"><i class="bi bi-person-circle"></i> {collapsed ? '' : 'Employee Pagination'}</NavLink>
        <NavLink to="/pgtest" className="nav-link" activeClassName="active"><i class="bi bi-person-circle"></i> {collapsed ? '' : ' pgtest'}</NavLink>
+       {/* <NavLink to="/utilPagingAndSorting" className="nav-link" activeClassName="active"><i class="bi bi-person-circle"></i> {collapsed ? '' : ' UtilPagingAndSorting'}</NavLink> */}
        
         </Nav>
           </Col>
@@ -74,6 +79,8 @@ function App() {
             <Route path="/excelExport" element={<ExcelExport />} />  
             <Route path="/paginationExample" element={<PaginationExample />} /> 
             <Route path="/pgtest" element={<Pgtest />} />   
+            {/* <Route path="/utilPagingAndSorting" element={<UtilPagingAndSorting data={props.users} itemsPerPage={4} />} />  */}
+            
                              
           </Routes>
           </Col>

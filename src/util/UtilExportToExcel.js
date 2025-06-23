@@ -28,9 +28,11 @@ const UtilExportToExcel = (props) => {
 
   return (
     <>
-    <button className="bi bi-file-earmark-excel-fill" onClick={exportToExcel}>
+    {/* <button className="bi bi-file-earmark-excel-fill" onClick={exportToExcel}>
       Export to Excel
-    </button>
+    </button> */}
+    <div className='my-2 col-8'>
+     <button class="btn btn-primary bi-file-earmark-excel-fill" onClick={exportToExcel}>Export to Excel</button></div>
     </>
   );
 };
