@@ -28,7 +28,7 @@ function App() {
       {/* Header */}
       <Navbar bg="dark" variant="dark" className="px-3">
         <Button variant="outline-light" onClick={() => setCollapsed(!collapsed)}>
-          ☰
+           <i className="bi bi-list"></i>
         </Button>
         <Navbar.Brand className="ms-3">Welcome to Vijai CodingMania.com</Navbar.Brand>
       </Navbar>
@@ -50,7 +50,7 @@ function App() {
         <Nav className="flex-column pt-3" >
           <NavLink to="/" end className="nav-link" activeClassName="active"><i className="bi bi-house-door-fill me-2"></i>{collapsed ? '' : 'Home'}</NavLink>
           <NavLink to="/projects" className="nav-link" activeClassName="active"> <i className="bi bi-file-earmark-code me-2"></i>{collapsed ? '' : 'Projects'}</NavLink>
-          <NavLink to="/settings" className="nav-link" activeClassName="active">⚙️ {collapsed ? '' : 'Settings'}</NavLink>
+          <NavLink to="/settings" className="nav-link" activeClassName="active"><i className="bi bi-gear me-1"></i> {collapsed ? '' : 'Settings'}</NavLink>
           <NavLink to="/aboutUs" className="nav-link" activeClassName="active"><i className="bi bi-info-circle-fill"></i>  {collapsed ? '' : 'About Us'}</NavLink>
           <NavLink to="/contactUs" className="nav-link" activeClassName="active"> <i className="bi bi-telephone-fill me-2"></i> {collapsed ? '' : 'Contact Us'}</NavLink>
           <NavLink to="/members" className="nav-link" activeClassName="active"><i class="bi bi-person-circle"></i> {collapsed ? '' : 'Members'}</NavLink>
@@ -69,11 +69,11 @@ function App() {
             <Route path="/settings" element={<Settings />} />   
             <Route path="/contactUs" element={<Contact />} />   
             <Route path="/aboutUs" element={<About />} />   
-             <Route path="/employee" element={<Employee />} />   
+            <Route path="/employee" element={<Employee />} />   
             <Route path="/members" element={<Members />} />   
             <Route path="/excelExport" element={<ExcelExport />} />  
             <Route path="/paginationExample" element={<PaginationExample />} /> 
-             <Route path="/pgtest" element={<Pgtest />} />   
+            <Route path="/pgtest" element={<Pgtest />} />   
                              
           </Routes>
           </Col>

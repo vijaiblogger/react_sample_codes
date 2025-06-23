@@ -55,7 +55,7 @@ export default function Home() {
 
       {/* Call to Action */}
       <section className="text-center py-5 bg-primary text-white">
-        <div className="container">
+        <div className="container ">
           <h2>Ready to Start?</h2>
           <p className="mb-4">Let us help you build something amazing today.</p>
           <a href="/contactUs" className="btn btn-light btn-lg">Contact Us</a>
