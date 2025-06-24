@@ -45,13 +45,19 @@
               setSelectedIds((prev) =>
                 prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]
               );
+              alert(id);
+              localStorage.setItem('ids', id);
             };
           console.log(currentPage);
             const isChecked = (id) => selectedIds.includes(id);
 
               // 🧠 Edit action (customize as needed)
                 const handleEdit = () => {
-                  if (selectedIds.length === 1) {
+                   
+                  if (selectedIds.length === 0) {
+                     alert("Please select an Item");
+                  }
+                  else if (selectedIds.length === 1) {
                     alert("Editing ID: " + selectedIds[0]);
                   } else {
                     alert("Please select only 1 item to edit.");
@@ -72,7 +78,7 @@
             return (
               <>
                    
-                 {displayMenubar ? 
+                 {/* {displayMenubar ? 
                 <div id="menubar"  className="container menubar_background_color">               
                 <div className=" justify-content-end d-flex gap-2">
                   <button className="btn btn-outline-primary" onClick={handleEdit}>
@@ -83,7 +89,7 @@
                   </button>
                </div>
               </div> 
-              : <p></p>}  
+              : <p></p>}   */}
 
 
               <div className="container mt-4">
@@ -91,7 +97,7 @@
                   <thead className="table-primary">
                     
                     <tr>
-                      <th className="table_header_background_color"></th>
+                      {displayMenubar && <th className="table_header_background_color"></th>}
                       {columnKeys.map((key) => (
                         <th className="table_header_background_color"
                           key={key}
@@ -108,13 +114,16 @@
                   <tbody>
                     {currentData.map((row, rowIndex) => (
                       <tr key={rowIndex}>
-                        <td>
-                          <input
-                            type="checkbox"
-                            checked={isChecked(row.id)}
-                            onChange={() => handleCheckboxChange(row.id)}
-                          />
-                        </td>
+
+                      {displayMenubar && 
+                      <td>
+                        <input
+                        type="checkbox"
+                        checked={isChecked(row.id)}
+                        onChange={() => handleCheckboxChange(row.id)}
+                        />
+                      </td>
+                      }                    
 
                         {columnKeys.map((key) => (
                           <td  key={key}>{row[key]}</td>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import UtilPagingAndSorting from "../util/UtilPagingAndSorting";
+import Menubar from "../util/Menubar";
 
 const PaginationExample = () => {
   //const items = Array.from({ length: 50 }, (_, i) => `Item ${i + 1}`);
@@ -97,8 +98,13 @@ const PaginationExample = () => {
   }
 ];
 
+ const handleChildButtonClick = () => {
+    alert('Button in child clicked — handled in parent!');
+    const value = localStorage.getItem('ids');
+    alert(value);
+  };
 
-  const itemsPerPage = 5;
+               const itemsPerPage = 5;
 
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = Math.ceil(items.length / itemsPerPage);
@@ -130,8 +136,10 @@ const PaginationExample = () => {
     <div className="container ">
       <h3 className="mb-3">Pagination Example</h3>
 
-     
-      <UtilPagingAndSorting data={items}/>
+       <Menubar onButtonClick={handleChildButtonClick}/>
+      <UtilPagingAndSorting data={items} itemsPerPage={3} displayMenubar={true} /> 
+
+
     </div>
   );
 };
