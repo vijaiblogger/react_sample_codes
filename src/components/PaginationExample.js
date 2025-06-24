@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import UtilPagingAndSorting from "../util/UtilPagingAndSorting";
-
+import Menubar from "../util/Menubar"; 
 
 const PaginationExample = () => {
   //const items = Array.from({ length: 50 }, (_, i) => `Item ${i + 1}`);
@@ -98,6 +98,23 @@ const PaginationExample = () => {
   }
 ]);
 
+          const [rowData, setRowData] = useState();
+   
+          const handleCheckboxChange = (data) => {
+            console.log(data);
+            setRowData(data);
+          };
+
+          const deleteUser = () => {           
+            if(rowData==undefined)
+            {
+              alert('Please select record.');
+            }
+            alert(JSON.stringify( rowData));
+                      
+          };
+
+
           const deleteSelectedUsers = (selectedIds) => {
           const confirmed = window.confirm("Are you sure you want to delete selected users?");
           if (confirmed) {
@@ -141,13 +158,13 @@ const PaginationExample = () => {
       return (
         <div className="container ">
           <h3 className="mb-3">Pagination Example</h3>
+          <Menubar onDelete={deleteUser} /> 
           <UtilPagingAndSorting data={items} 
           itemsPerPage={3} 
-          displayMenubar={true} 
+          displayCheckbox={true} 
           setItem={setItem} 
-          onDeleteSelected={deleteSelectedUsers} /> 
-
-
+          sendDataToParent={handleCheckboxChange}          
+          /> 
         </div>
       );
     };

@@ -3,7 +3,7 @@
           import 'bootstrap-icons/font/bootstrap-icons.css';    
           import Menubar from "./Menubar";     
 
-          const UtilPagingAndSorting = ({ data, itemsPerPage = 5,displayMenubar=false,onDeleteSelected,setItem}) => {          
+          const UtilPagingAndSorting = ({ data, itemsPerPage = 5,displayCheckbox=false,sendDataToParent,setItem}) => {          
             const [currentPage, setCurrentPage] = useState(1);
             const [sortField, setSortField] = useState(null);
             const [sortOrder, setSortOrder] = useState("asc");
@@ -14,6 +14,11 @@
               const bVal = b[sortField]?.toString().toLowerCase() ?? "";
               return sortOrder === "asc" ? (aVal > bVal ? 1 : -1) : (aVal < bVal ? 1 : -1);
             });
+
+            // const handleChange = () => {
+            // sendDataToParent('Hello from Child!');
+            // };
+
 
             // 📄 Paginate
             const indexOfLast = currentPage * itemsPerPage;
@@ -41,14 +46,25 @@
             if (!data || data.length === 0) return <div>No data to display.</div>;
 
             const columnKeys = Object.keys(data[0]);
+
             const handleCheckboxChange = (id) => {
-            // alert(id);
-              setSelectedIds((prev) =>
-                prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]
-              );
-              alert(selectedIds);
-              localStorage.setItem('ids', selectedIds);
+               alert(id);
+               const rowData = data.find(u => u.id === id);
+
+               console.log(rowData);
+               //const arrayData=[];
+
+              // alert(id);
+              // setSelectedIds((prev) =>
+              //   prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]
+              // );
+
+              sendDataToParent(rowData);
+              //alert(selectedIds);
+              //localStorage.setItem('ids', selectedIds);
             };
+
+
             console.log(currentPage);
             const isChecked = (id) => selectedIds.includes(id);
 
@@ -94,7 +110,7 @@
                     return;
                   }
 
-                  onDeleteSelected(selectedIds);
+                  // onDeleteSelected(selectedIds);
                 };
               
 
@@ -103,14 +119,14 @@
               <>
                     
 
-            {displayMenubar &&<Menubar onButtonClick={handleEdit} onDelete={handleDelete}/>}
+            {/* {displayMenubar &&<Menubar onButtonClick={handleEdit} onDelete={handleDelete}/>} */}
 
               <div className="container mt-4">
                 <table className="table table-bordered table-hover">
                   <thead className="table-primary">
                     
                     <tr>
-                      {displayMenubar && <th className="table_header_background_color"></th>}
+                      {displayCheckbox && <th className="table_header_background_color"></th>}
                       {columnKeys.map((key) => (
                         <th className="table_header_background_color"
                           key={key}
@@ -128,7 +144,7 @@
                     {currentData.map((row, rowIndex) => (
                       <tr key={rowIndex}>
 
-                      {displayMenubar && 
+                      {displayCheckbox && 
                       <td>
                         <input
                         type="checkbox"
