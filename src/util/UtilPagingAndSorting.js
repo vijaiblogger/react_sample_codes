@@ -1,8 +1,9 @@
-          import React, { useState } from "react";
+          import React, { useState ,useEffect } from "react";
           import "bootstrap/dist/css/bootstrap.min.css";
-          import 'bootstrap-icons/font/bootstrap-icons.css';         
+          import 'bootstrap-icons/font/bootstrap-icons.css';    
+          import Menubar from "./Menubar";     
 
-          const UtilPagingAndSorting = ({ data, itemsPerPage = 5,displayMenubar=false }) => {          
+          const UtilPagingAndSorting = ({ data, itemsPerPage = 5,displayMenubar=false,onDeleteSelected,setItem}) => {          
             const [currentPage, setCurrentPage] = useState(1);
             const [sortField, setSortField] = useState(null);
             const [sortOrder, setSortOrder] = useState("asc");
@@ -45,8 +46,8 @@
               setSelectedIds((prev) =>
                 prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]
               );
-              alert(id);
-              localStorage.setItem('ids', id);
+              alert(selectedIds);
+              localStorage.setItem('ids', selectedIds);
             };
           console.log(currentPage);
             const isChecked = (id) => selectedIds.includes(id);
@@ -62,35 +63,42 @@
                   } else {
                     alert("Please select only 1 item to edit.");
                   }
+                  
                 };
 
+
+                    
+
                 // 🧠 Delete action
-                const handleDelete = () => {
-                  if (selectedIds.length === 0) return alert("Please select at least one item.");
-                  if (window.confirm(`Delete ${selectedIds.length} item(s)?`)) {
-                    alert("Deleted: " + selectedIds.join(", "));
-                    // You can lift the delete action to parent via props
+              
+                  const deleteSelectedUsers = (selectedIds) => {
+                  const confirmed = window.confirm("Are you sure you want to delete selected users?");
+                  if (confirmed) {
+                  setItem(prev => prev.filter(user => !selectedIds.includes(user.id)));
                   }
+                  };
+
+              
+                const handleSelectAll = () => {
+                  if (selectedIds) {
+                    setSelectedIds([]);
+                  } else {
+                    setSelectedIds(data.map(user => user.id));
+                  }
+                  setSelectedIds(!selectedIds);
                 };
-            if (!data || data.length === 0) return <div>No data to display.</div>;
+              
+                const handleDelete = () => {
+                  onDeleteSelected(selectedIds);
+                };
+              
 
 
             return (
               <>
-                   
-                 {/* {displayMenubar ? 
-                <div id="menubar"  className="container menubar_background_color">               
-                <div className=" justify-content-end d-flex gap-2">
-                  <button className="btn btn-outline-primary" onClick={handleEdit}>
-                    <i className="bi bi-pencil-fill me-1"></i> Edit
-                  </button>
-                  <button className="btn btn-outline-danger" onClick={handleDelete}>
-                    <i className="bi bi-trash-fill me-1"></i> Delete
-                  </button>
-               </div>
-              </div> 
-              : <p></p>}   */}
+                    
 
+            {displayMenubar &&<Menubar onButtonClick={handleEdit} onDelete={handleDelete}/>}
 
               <div className="container mt-4">
                 <table className="table table-bordered table-hover">
@@ -149,6 +157,7 @@
                         <button className="page-link" onClick={() => handlePageChange(i + 1)}>
                           {i + 1}
                         </button>
+                        
                       </li>
                     ))}
                     <li className={`page-item ${currentPage === totalPages ? "disabled" : ""}`}>

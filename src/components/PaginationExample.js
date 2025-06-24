@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import UtilPagingAndSorting from "../util/UtilPagingAndSorting";
-import Menubar from "../util/Menubar";
+
 
 const PaginationExample = () => {
   //const items = Array.from({ length: 50 }, (_, i) => `Item ${i + 1}`);
 
-  const items=[
+  const [items,setItem]=useState([
   {
     "id": 1,
     "name": "Alice Johnson",
@@ -96,13 +96,22 @@ const PaginationExample = () => {
     "email": "emily.cheddn@example.com",
     "phone": "567-890ddd-1234"
   }
-];
+]);
 
- const handleChildButtonClick = () => {
-    alert('Button in child clicked — handled in parent!');
-    const value = localStorage.getItem('ids');
-    alert(value);
+                 const deleteSelectedUsers = (selectedIds) => {
+    const confirmed = window.confirm("Are you sure you want to delete selected users?");
+    if (confirmed) {
+      setItem(prev => prev.filter(user => !selectedIds.includes(user.id)));
+    }
   };
+                  const handleChildButtonClick=(id)=>{
+                  alert('Button in child clicked — handled in parent!');
+                  const value = localStorage.getItem('ids');
+                  alert(value);
+                  }
+
+
+
 
                const itemsPerPage = 5;
 
@@ -135,9 +144,11 @@ const PaginationExample = () => {
   return (
     <div className="container ">
       <h3 className="mb-3">Pagination Example</h3>
-
-       <Menubar onButtonClick={handleChildButtonClick}/>
-      <UtilPagingAndSorting data={items} itemsPerPage={3} displayMenubar={true} /> 
+      <UtilPagingAndSorting data={items} 
+      itemsPerPage={3} 
+      displayMenubar={true} 
+      setItem={setItem} 
+      onDeleteSelected={deleteSelectedUsers} /> 
 
 
     </div>

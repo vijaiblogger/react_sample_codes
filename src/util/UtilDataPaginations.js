@@ -48,11 +48,7 @@ const allKeys = getLeafPropertyNames(items);
               <td key={index} >
                     {itemr[item]}
                     
-              </td>
-              
-                        
-                    
-                    
+              </td>    
             ))}
           </tr>
         ))} 
