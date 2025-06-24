@@ -98,61 +98,58 @@ const PaginationExample = () => {
   }
 ]);
 
-                 const deleteSelectedUsers = (selectedIds) => {
-    const confirmed = window.confirm("Are you sure you want to delete selected users?");
-    if (confirmed) {
-      setItem(prev => prev.filter(user => !selectedIds.includes(user.id)));
-    }
-  };
-                  const handleChildButtonClick=(id)=>{
-                  alert('Button in child clicked — handled in parent!');
-                  const value = localStorage.getItem('ids');
-                  alert(value);
-                  }
+          const deleteSelectedUsers = (selectedIds) => {
+          const confirmed = window.confirm("Are you sure you want to delete selected users?");
+          if (confirmed) {
+          setItem(prev => prev.filter(user => !selectedIds.includes(user.id)));
+          }
+          };
+          const handleChildButtonClick=(id)=>{
+          alert('Button in child clicked — handled in parent!');
+          const value = localStorage.getItem('ids');
+          alert(value);
+          }
+
+          const itemsPerPage = 5;
+
+      const [currentPage, setCurrentPage] = useState(1);
+      const totalPages = Math.ceil(items.length / itemsPerPage);
+
+      const indexOfLastItem = currentPage * itemsPerPage;
+      const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+      const currentItems = items.slice(indexOfFirstItem, indexOfLastItem);
+
+      const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+      const renderPagination = () => {
+        let pages = [];
+        for (let i = 1; i <= totalPages; i++) {
+          pages.push(
+            <li
+              key={i}
+              className={`page-item ${currentPage === i ? "active" : ""}`}
+            >
+              <button className="page-link" onClick={() => paginate(i)}>
+                {i}
+              </button>
+            </li>
+          );
+        }
+        return pages;
+      };
+
+      return (
+        <div className="container ">
+          <h3 className="mb-3">Pagination Example</h3>
+          <UtilPagingAndSorting data={items} 
+          itemsPerPage={3} 
+          displayMenubar={true} 
+          setItem={setItem} 
+          onDeleteSelected={deleteSelectedUsers} /> 
 
 
-
-
-               const itemsPerPage = 5;
-
-  const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = Math.ceil(items.length / itemsPerPage);
-
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = items.slice(indexOfFirstItem, indexOfLastItem);
-
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
-  const renderPagination = () => {
-    let pages = [];
-    for (let i = 1; i <= totalPages; i++) {
-      pages.push(
-        <li
-          key={i}
-          className={`page-item ${currentPage === i ? "active" : ""}`}
-        >
-          <button className="page-link" onClick={() => paginate(i)}>
-            {i}
-          </button>
-        </li>
+        </div>
       );
-    }
-    return pages;
-  };
+    };
 
-  return (
-    <div className="container ">
-      <h3 className="mb-3">Pagination Example</h3>
-      <UtilPagingAndSorting data={items} 
-      itemsPerPage={3} 
-      displayMenubar={true} 
-      setItem={setItem} 
-      onDeleteSelected={deleteSelectedUsers} /> 
-
-
-    </div>
-  );
-};
-
-export default PaginationExample;
+    export default PaginationExample;

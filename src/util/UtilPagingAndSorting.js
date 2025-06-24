@@ -41,7 +41,7 @@
             if (!data || data.length === 0) return <div>No data to display.</div>;
 
             const columnKeys = Object.keys(data[0]);
-          const handleCheckboxChange = (id) => {
+            const handleCheckboxChange = (id) => {
             // alert(id);
               setSelectedIds((prev) =>
                 prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]
@@ -49,7 +49,7 @@
               alert(selectedIds);
               localStorage.setItem('ids', selectedIds);
             };
-          console.log(currentPage);
+            console.log(currentPage);
             const isChecked = (id) => selectedIds.includes(id);
 
               // 🧠 Edit action (customize as needed)
@@ -89,6 +89,11 @@
                 };
               
                 const handleDelete = () => {
+                  if (selectedIds.length === 0) {
+         				  alert("Please select at least one row to delete.");
+                    return;
+                  }
+
                   onDeleteSelected(selectedIds);
                 };
               
