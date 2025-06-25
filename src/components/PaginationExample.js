@@ -1,14 +1,37 @@
 import React, { useState } from "react";
 import UtilPagingAndSorting from "../util/UtilPagingAndSorting";
 import Menubar from "../util/Menubar"; 
-
+import EmployeeModal from "./Employee/EmployeeModal ";
+import { Button } from 'react-bootstrap';
 const PaginationExample = () => {
   //const items = Array.from({ length: 50 }, (_, i) => `Item ${i + 1}`);
+const [modalShow, setModalShow] = useState(false);
+  const [selectedEmployee, setSelectedEmployee] = useState(null);
+  const [employees, setEmployees] = useState([]);
 
+  const handleSave = (data) => {
+    setEmployees(prev =>
+      selectedEmployee
+        ? prev.map(emp => (emp.email === selectedEmployee.email ? data : emp))
+        : [...prev, data]
+    );
+    setSelectedEmployee(null);
+  };
+
+  const handleEdit = (emp) => {
+    setSelectedEmployee(emp);
+    setModalShow(true);
+  };
+
+const emp={
+    "name": "Alice Johnson", 
+    "email": "alice.johnson@example.com", 
+    "role": "Software Engineer",
+};
   const [items,setItem]=useState([
   {
     "id": 1,
-    "name": "Alice Johnson",
+    "name": "Alice Johnson", 
     "age": 30,
     "position": "Software Engineer",
     "department": "Development",
@@ -99,7 +122,7 @@ const PaginationExample = () => {
 ]);
 
           const [rowData, setRowData] = useState();
-          const [makeEditButtonDisable, setMakeEditButtonDisable] = useState(false);
+          const [makeEditButtonDisable, setMakeEditButtonDisable] = useState(true);
    
           const handleCheckboxChange = (data,recordIds) => {
             console.log(data);
@@ -140,11 +163,19 @@ const PaginationExample = () => {
           alert(value);
           }
 
-          const onUserEdit = () => {           
+          const onUserEdit = () => {  
+            
+            alert();
+            debugger;
+            
             if(rowData==undefined)
             {
               alert('Please select record.');
-            }       
+            }   
+             
+              setSelectedEmployee(emp);
+              setModalShow(true);
+
           };
 
 
@@ -177,6 +208,9 @@ const PaginationExample = () => {
       };
 
       return (
+<>
+        
+
         <div className="container ">
           <h3 className="mb-3">Pagination Example</h3>          
           {/* <Menubar onDelete={deleteUser} editUser={editUser} makeEditButtonDisable={makeEditButtonDisable} />  */}
@@ -202,6 +236,7 @@ const PaginationExample = () => {
           sendDataToParent={handleCheckboxChange}          
           /> 
         </div>
+        </>
       );
     };
 
