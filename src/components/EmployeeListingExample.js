@@ -1,40 +1,11 @@
 import React, { useState } from "react";
 import UtilPagingAndSorting from "../util/UtilPagingAndSorting";
-//import Menubar from "../util/Menubar"; 
-import SuccessModal from "../util/SuccessModal"; 
-
+import SuccessModal from "../util/SuccessModal";
 import EmployeeModal from "./Employee/EmployeeModal ";
 import { Button } from 'react-bootstrap';
-const PaginationExample = () => {
 
-  const [showSuccess, setShowSuccess] = useState(false);
-  const [messageText, setMessageText] = useState('');
-  const [messageType, setMessageType] = useState('');
-
-  //const items = Array.from({ length: 50 }, (_, i) => `Item ${i + 1}`);
-const [modalShow, setModalShow] = useState(false);
-  const [selectedEmployee, setSelectedEmployee] = useState(null);
-  const [employees, setEmployees] = useState([]);
-
-  const handleSave = (data) => {
-    setEmployees(prev =>
-      selectedEmployee
-        ? prev.map(emp => (emp.email === selectedEmployee.email ? data : emp))
-        : [...prev, data]
-    );
-    setSelectedEmployee(null);
-  };
-
-  const handleEdit = (emp) => {
-    setSelectedEmployee(emp);
-    setModalShow(true);
-  };
-
-const emp={
-    "name": "Alice Johnson", 
-    "email": "alice.johnson@example.com", 
-    "role": "Software Engineer",
-};
+  const EmployeeListingExample = () => {
+    
   const [items,setItem]=useState([
   {
     "id": 1,
@@ -128,10 +99,32 @@ const emp={
   }
 ]);
 
-          const [rowData, setRowData] = useState();
-          const [makeEditButtonDisable, setMakeEditButtonDisable] = useState(true);
-          const [makeDeleteButtonDisable, setMakeDeleteButtonDisable] = useState(true);
-   
+    const [showSuccess, setShowSuccess] = useState(false);
+    const [messageText, setMessageText] = useState('');
+    const [messageType, setMessageType] = useState(''); 
+    const [modalShow, setModalShow] = useState(false);
+    const [selectedEmployee, setSelectedEmployee] = useState(null);
+    const [employees, setEmployees] = useState([]);
+    const [rowData, setRowData] = useState();
+    const [makeEditButtonDisable, setMakeEditButtonDisable] = useState(true);
+    const [makeDeleteButtonDisable, setMakeDeleteButtonDisable] = useState(true);
+    const itemsPerPage = 5;
+    const [currentPage, setCurrentPage] = useState(1);
+    const totalPages = Math.ceil(items.length / itemsPerPage);
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentItems = items.slice(indexOfFirstItem, indexOfLastItem);
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  
+          const handleSave = (data) => {
+          setEmployees(prev =>
+              selectedEmployee
+                ? prev.map(emp => (emp.email === selectedEmployee.email ? data : emp))
+                : [...prev, data]
+            );
+            setSelectedEmployee(null);
+          };         
+    
           const handleCheckboxChange = (data,recordIds) => {
             console.log(data);
             setRowData(data);
@@ -152,9 +145,7 @@ const emp={
                 setMakeDeleteButtonDisable(false);
                 setMakeEditButtonDisable(true);
               }
-          };
-
-        
+          };        
 
           const onDeleteUser = () => {
             setTimeout(() => {
@@ -195,18 +186,6 @@ const emp={
 
           };
 
-
-          const itemsPerPage = 5;
-
-      const [currentPage, setCurrentPage] = useState(1);
-      const totalPages = Math.ceil(items.length / itemsPerPage);
-
-      const indexOfLastItem = currentPage * itemsPerPage;
-      const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-      const currentItems = items.slice(indexOfFirstItem, indexOfLastItem);
-
-      const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
       const renderPagination = () => {
         let pages = [];
         for (let i = 1; i <= totalPages; i++) {
@@ -225,19 +204,19 @@ const emp={
       };
 
       return (
-<>
+            <>
         
-        <div className="container mt-5 text-center">      
+            <div >      
               <SuccessModal
                 show={showSuccess}
                 onClose={() => setShowSuccess(false)}
                 messageText={messageText} 
                 messageType={messageType}
               />
-        </div>   
+              </div>   
 
-        <div className="container ">
-          <h3 className="mb-3">Pagination Example</h3>          
+          <div >
+          <h3 className="mb-3">Employee Lists</h3>          
           {/* <Menubar onDelete={deleteUser} editUser={editUser} makeEditButtonDisable={makeEditButtonDisable} />  */}
            <div>        
             <div id="menubar"  className="container menubar_background_color">               
@@ -265,4 +244,4 @@ const emp={
       );
     };
 
-    export default PaginationExample;
+    export default EmployeeListingExample;
