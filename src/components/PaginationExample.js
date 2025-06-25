@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import UtilPagingAndSorting from "../util/UtilPagingAndSorting";
-import Menubar from "../util/Menubar"; 
+//import Menubar from "../util/Menubar"; 
+import SuccessModal from "../util/SuccessModal"; 
+
 import EmployeeModal from "./Employee/EmployeeModal ";
 import { Button } from 'react-bootstrap';
 const PaginationExample = () => {
+
+  const [showSuccess, setShowSuccess] = useState(false);
   //const items = Array.from({ length: 50 }, (_, i) => `Item ${i + 1}`);
 const [modalShow, setModalShow] = useState(false);
   const [selectedEmployee, setSelectedEmployee] = useState(null);
@@ -149,12 +153,17 @@ const emp={
 
         
 
-          const onDeleteUser = () => {           
+          const onDeleteUser = () => {
+            
+            setTimeout(() => {
+            setShowSuccess(true);
+            }, 500);
+
             if(rowData==undefined)
             {
               alert('Please select record.');
             }
-            alert(JSON.stringify( rowData));
+            //alert(JSON.stringify( rowData));
                       
           };
 
@@ -171,10 +180,10 @@ const emp={
           alert(value);
           }
 
-          const onUserEdit = () => {  
-            
-            alert();
-            debugger;
+          const onUserEdit = () => {              
+           setTimeout(() => {
+            setShowSuccess(true);
+            }, 500);
             
             if(rowData==undefined)
             {
@@ -218,6 +227,14 @@ const emp={
       return (
 <>
         
+ <div className="container mt-5 text-center">      
+      <SuccessModal
+        show={showSuccess}
+        onClose={() => setShowSuccess(false)}
+        message="Employee added successfully!"
+      />
+</div>
+   
 
         <div className="container ">
           <h3 className="mb-3">Pagination Example</h3>          
