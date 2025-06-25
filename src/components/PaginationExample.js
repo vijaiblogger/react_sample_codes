@@ -99,11 +99,20 @@ const PaginationExample = () => {
 ]);
 
           const [rowData, setRowData] = useState();
+          const [makeEditButtonDisable, setMakeEditButtonDisable] = useState(false);
    
-          const handleCheckboxChange = (data) => {
+          const handleCheckboxChange = (data,recordIds) => {
             console.log(data);
             setRowData(data);
+            console.log(recordIds);  
+              if(recordIds.length>1)
+              {
+              setMakeEditButtonDisable(true);
+
+              }
           };
+
+        
 
           const deleteUser = () => {           
             if(rowData==undefined)
@@ -168,7 +177,7 @@ const PaginationExample = () => {
       return (
         <div className="container ">
           <h3 className="mb-3">Pagination Example</h3>
-          <Menubar onDelete={deleteUser} editUser={editUser} /> 
+          <Menubar onDelete={deleteUser} editUser={editUser} makeEditButtonDisable={makeEditButtonDisable} /> 
           <UtilPagingAndSorting data={items} 
           itemsPerPage={3} 
           displayCheckbox={true} 

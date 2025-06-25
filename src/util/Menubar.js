@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Menubar({ editUser ,onDelete }) {
+export default function Menubar({ editUser ,onDelete,makeEditButtonDisable=true }) {
   
             const onUserDelete = () => {
                onDelete();
@@ -25,7 +25,9 @@ export default function Menubar({ editUser ,onDelete }) {
          <div>        
             <div id="menubar"  className="container menubar_background_color">               
               <div className=" justify-content-end d-flex gap-2">
-                <button  onClick={onUserEdit}  className="btn btn-outline-primary" >
+             
+
+                <button disabled={makeEditButtonDisable}  onClick={onUserEdit}  className="btn btn-outline-primary" >
                   <i className="bi bi-pencil-fill me-1"></i> Edit
                 </button>
 

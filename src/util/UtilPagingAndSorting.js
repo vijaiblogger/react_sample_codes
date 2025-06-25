@@ -26,6 +26,7 @@
             const currentData = sortedData.slice(indexOfFirst, indexOfLast);
             const totalPages = Math.ceil(data.length / itemsPerPage);
             const [selectedIds, setSelectedIds] = useState([]);
+            const [recordIds, setRecordIds] = useState([]);
             // 🔁 Sort handler
             const handleSort = (field) => {
               if (field === sortField) {
@@ -46,22 +47,34 @@
 
             const columnKeys = Object.keys(data[0]);
               //checkbox code
-            const handleCheckboxChange = (id) => {
-               alert(id);
+            const handleCheckboxChange = (event,id) => {
+               if(event.target.checked)
+                {
+                recordIds.push(id);
+                } 
+                else
+                {
+                  const index = recordIds.indexOf(id);
+                  if (index > -1) { // only splice array when item is found
+                  recordIds.splice(index, 1); // 2nd parameter means remove one item only
+                  }
+                }
+
                const rowData = data.find(u => u.id === id);
-               console.log(rowData);
+               //console.log(rowData);
               // alert(id);
               setSelectedIds((prev) =>
                 prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]
               );
-              console.log(setSelectedIds);
-               sendDataToParent(rowData);             
+              //console.log(setSelectedIds);
+              sendDataToParent(rowData,recordIds);  
+                            
               //alert(selectedIds);
               //localStorage.setItem('ids', selectedIds);
             };
 
 
-            console.log(currentPage);
+           // console.log(currentPage);
             const isChecked = (id) => selectedIds.includes(id);
 
               // 🧠 Edit action (customize as needed)
@@ -143,7 +156,7 @@
                         <input
                         type="checkbox"
                         checked={isChecked(row.id)}
-                        onChange={() => handleCheckboxChange(row.id)}
+                        onChange={(event) => handleCheckboxChange(event,row.id)}
                         />
                       </td>
                       }                    
