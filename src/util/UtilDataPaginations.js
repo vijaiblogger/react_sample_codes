@@ -72,6 +72,6 @@ const allKeys = getLeafPropertyNames(items);
       </nav>
     </div></>
   );
-};
 
+};
 export default UtilDataPaginations;

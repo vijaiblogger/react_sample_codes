@@ -127,6 +127,16 @@ const PaginationExample = () => {
           alert(value);
           }
 
+           const editUser = () => {           
+            if(rowData==undefined)
+            {
+              alert('Please select record.');
+            }
+            alert(JSON.stringify( rowData));
+                      
+          };
+
+
           const itemsPerPage = 5;
 
       const [currentPage, setCurrentPage] = useState(1);
@@ -158,7 +168,7 @@ const PaginationExample = () => {
       return (
         <div className="container ">
           <h3 className="mb-3">Pagination Example</h3>
-          <Menubar onDelete={deleteUser} /> 
+          <Menubar onDelete={deleteUser} editUser={editUser} /> 
           <UtilPagingAndSorting data={items} 
           itemsPerPage={3} 
           displayCheckbox={true} 

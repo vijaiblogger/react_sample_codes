@@ -1,7 +1,7 @@
           import React, { useState ,useEffect } from "react";
           import "bootstrap/dist/css/bootstrap.min.css";
           import 'bootstrap-icons/font/bootstrap-icons.css';    
-          import Menubar from "./Menubar";     
+          // import Menubar from "./Menubar";     
 
           const UtilPagingAndSorting = ({ data, itemsPerPage = 5,displayCheckbox=false,sendDataToParent,setItem}) => {          
             const [currentPage, setCurrentPage] = useState(1);
@@ -42,24 +42,20 @@
                 setCurrentPage(page);
               }
             };
-          
             if (!data || data.length === 0) return <div>No data to display.</div>;
 
             const columnKeys = Object.keys(data[0]);
-
+              //checkbox code
             const handleCheckboxChange = (id) => {
                alert(id);
                const rowData = data.find(u => u.id === id);
-
                console.log(rowData);
-               //const arrayData=[];
-
               // alert(id);
-              // setSelectedIds((prev) =>
-              //   prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]
-              // );
-
-              sendDataToParent(rowData);
+              setSelectedIds((prev) =>
+                prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]
+              );
+              console.log(setSelectedIds);
+               sendDataToParent(rowData);             
               //alert(selectedIds);
               //localStorage.setItem('ids', selectedIds);
             };
@@ -93,9 +89,7 @@
                   setItem(prev => prev.filter(user => !selectedIds.includes(user.id)));
                   }
                   };
-
-              
-                const handleSelectAll = () => {
+                  const handleSelectAll = () => {
                   if (selectedIds) {
                     setSelectedIds([]);
                   } else {
@@ -104,14 +98,14 @@
                   setSelectedIds(!selectedIds);
                 };
               
-                const handleDelete = () => {
-                  if (selectedIds.length === 0) {
-         				  alert("Please select at least one row to delete.");
-                    return;
-                  }
+                // const handleDelete = () => {
+                //   if (selectedIds.length === 0) {
+         				//   alert("Please select at least one row to delete.");
+                //     return;
+                //   }
 
-                  // onDeleteSelected(selectedIds);
-                };
+                //   // onDeleteSelected(selectedIds);
+                // };
               
 
 
