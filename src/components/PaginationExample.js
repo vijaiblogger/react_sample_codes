@@ -123,19 +123,27 @@ const emp={
 
           const [rowData, setRowData] = useState();
           const [makeEditButtonDisable, setMakeEditButtonDisable] = useState(true);
+          const [makeDeleteButtonDisable, setMakeDeleteButtonDisable] = useState(true);
    
           const handleCheckboxChange = (data,recordIds) => {
             console.log(data);
             setRowData(data);
             console.log(recordIds);  
-              if(recordIds.length>1)
+              if(recordIds.length==0)
               {
               setMakeEditButtonDisable(true);
+              setMakeDeleteButtonDisable(true);
 
               }
-              else
+              else if(recordIds.length==1)
               {
+                setMakeDeleteButtonDisable(false);
                 setMakeEditButtonDisable(false);
+              }
+              else if(recordIds.length>1)
+              {
+                setMakeDeleteButtonDisable(false);
+                setMakeEditButtonDisable(true);
               }
           };
 
@@ -223,7 +231,7 @@ const emp={
                   <i className="bi bi-pencil-fill me-1"></i> Edit
                 </button>
 
-                <button className="btn btn-outline-danger" onClick={onDeleteUser} >
+                <button disabled={makeDeleteButtonDisable} className="btn btn-outline-danger" onClick={onDeleteUser} >
                   <i className="bi bi-trash-fill me-1"></i> Delete
                 </button>
               </div>
