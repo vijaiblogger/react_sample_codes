@@ -110,11 +110,15 @@ const PaginationExample = () => {
               setMakeEditButtonDisable(true);
 
               }
+              else
+              {
+                setMakeEditButtonDisable(false);
+              }
           };
 
         
 
-          const deleteUser = () => {           
+          const onDeleteUser = () => {           
             if(rowData==undefined)
             {
               alert('Please select record.');
@@ -136,13 +140,11 @@ const PaginationExample = () => {
           alert(value);
           }
 
-           const editUser = () => {           
+          const onUserEdit = () => {           
             if(rowData==undefined)
             {
               alert('Please select record.');
-            }
-            alert(JSON.stringify( rowData));
-                      
+            }       
           };
 
 
@@ -176,8 +178,23 @@ const PaginationExample = () => {
 
       return (
         <div className="container ">
-          <h3 className="mb-3">Pagination Example</h3>
-          <Menubar onDelete={deleteUser} editUser={editUser} makeEditButtonDisable={makeEditButtonDisable} /> 
+          <h3 className="mb-3">Pagination Example</h3>          
+          {/* <Menubar onDelete={deleteUser} editUser={editUser} makeEditButtonDisable={makeEditButtonDisable} />  */}
+           <div>        
+            <div id="menubar"  className="container menubar_background_color">               
+              <div className=" justify-content-end d-flex gap-2">
+             
+
+                <button disabled={makeEditButtonDisable}  onClick={onUserEdit}  className="btn btn-outline-primary" >
+                  <i className="bi bi-pencil-fill me-1"></i> Edit
+                </button>
+
+                <button className="btn btn-outline-danger" onClick={onDeleteUser} >
+                  <i className="bi bi-trash-fill me-1"></i> Delete
+                </button>
+              </div>
+            </div>           
+          </div>
           <UtilPagingAndSorting data={items} 
           itemsPerPage={3} 
           displayCheckbox={true} 
