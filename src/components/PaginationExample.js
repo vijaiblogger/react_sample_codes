@@ -8,6 +8,9 @@ import { Button } from 'react-bootstrap';
 const PaginationExample = () => {
 
   const [showSuccess, setShowSuccess] = useState(false);
+  const [messageText, setMessageText] = useState('');
+  const [messageType, setMessageType] = useState('');
+
   //const items = Array.from({ length: 50 }, (_, i) => `Item ${i + 1}`);
 const [modalShow, setModalShow] = useState(false);
   const [selectedEmployee, setSelectedEmployee] = useState(null);
@@ -154,9 +157,10 @@ const emp={
         
 
           const onDeleteUser = () => {
-            
             setTimeout(() => {
-            setShowSuccess(true);
+               setMessageText('User deleted succesfully!')
+               setMessageType('success');
+               setShowSuccess(true);
             }, 500);
 
             if(rowData==undefined)
@@ -181,10 +185,12 @@ const emp={
           }
 
           const onUserEdit = () => {              
-           setTimeout(() => {
-            setShowSuccess(true);
+            setTimeout(() => {
+               setMessageText('User updated succesfully!')
+               setMessageType('success');
+               setShowSuccess(true);
             }, 500);
-            
+
             if(rowData==undefined)
             {
               alert('Please select record.');
@@ -227,14 +233,14 @@ const emp={
       return (
 <>
         
- <div className="container mt-5 text-center">      
-      <SuccessModal
-        show={showSuccess}
-        onClose={() => setShowSuccess(false)}
-        message="Employee added successfully!"
-      />
-</div>
-   
+        <div className="container mt-5 text-center">      
+              <SuccessModal
+                show={showSuccess}
+                onClose={() => setShowSuccess(false)}
+                messageText={messageText} 
+                messageType={messageType}
+              />
+        </div>   
 
         <div className="container ">
           <h3 className="mb-3">Pagination Example</h3>          
