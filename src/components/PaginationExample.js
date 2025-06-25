@@ -184,20 +184,14 @@ const emp={
           alert(value);
           }
 
-          const onUserEdit = () => {              
+          const onUserEdit = () => {             
+            //alert('Edit button clicked');
+            //Below code will be inside success service call 
             setTimeout(() => {
                setMessageText('User updated succesfully!')
                setMessageType('success');
                setShowSuccess(true);
             }, 500);
-
-            if(rowData==undefined)
-            {
-              alert('Please select record.');
-            }   
-             
-              setSelectedEmployee(emp);
-              setModalShow(true);
 
           };
 
