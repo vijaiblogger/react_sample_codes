@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
-
+import SuccessModal from "../../util/SuccessModal";
 const CustomerForm = () => {
+    const [showSuccess, setShowSuccess] = useState(false);
+    const [messageText, setMessageText] = useState('');
+    const [messageType, setMessageType] = useState(''); 
+
   const [form, setForm] = useState({
     name: '',
     email: '',
@@ -43,6 +47,13 @@ const CustomerForm = () => {
       console.log('Form submitted successfully:', form);
       setSubmitted(true);
       setErrors({});
+
+      setTimeout(() => {
+               setMessageText('Record has been saved succesfully!')
+               setMessageType('success');
+               setShowSuccess(true);
+            }, 500);
+
     } else {
       setErrors(validationErrors);
       setSubmitted(false);
@@ -52,11 +63,23 @@ const CustomerForm = () => {
   return (
     <div className="container mt-4">
       <h3 className="mb-4">Customer Registration Form</h3>
-      {submitted && (
+      {/* {submitted && (
         <div className="alert alert-success" role="alert">
           Customer registered successfully!
         </div>
-      )}
+      )} */}
+   
+             <div>      
+              <SuccessModal
+                show={showSuccess}
+                onClose={() => setShowSuccess(false)}
+                messageText={messageText} 
+                messageType={messageType}
+              />
+              </div> 
+
+          
+
 
       <form onSubmit={handleSubmit} noValidate>
         <div className="mb-3">
