@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 
-const EmployeeModal = ({ show, handleClose, employeeData, onSave }) => {
+const EmployeeModal = ({ show, handleClose, employeeData, onHandleSaveEmployee }) => {
   const [employee, setEmployee] = useState({
     name: '',
     email: '',
@@ -23,7 +23,7 @@ const EmployeeModal = ({ show, handleClose, employeeData, onSave }) => {
   };
 
   const handleSubmit = () => {
-    onSave(employee);
+    onHandleSaveEmployee(employee);
     handleClose();
   };
 

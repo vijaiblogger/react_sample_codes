@@ -1,11 +1,23 @@
 import React, { useState } from "react";
 import UtilPagingAndSorting from "../util/UtilPagingAndSorting";
 import SuccessModal from "../util/SuccessModal";
-import EmployeeModal from "./Employee/EmployeeModal ";
+//import EmployeeModal from "./util/EmployeeModal";
+import EmployeeModal from '../util/EmployeeModal'
 import { Button } from 'react-bootstrap';
 
+
   const EmployeeListingExample = () => {
+
+      //start Emmployee model popup code
+      const [showModal, setShowModal] = useState(false);
+      const [selectedEmployee, setSelectedEmployee] = useState(null);    
+      const handleOpen = (employee = null) => {       
+        setSelectedEmployee(employee);
+        setShowModal(true);
+      };    
     
+    //end Emmployee model popup code
+
   const [items,setItem]=useState([
   {
     "id": 1,
@@ -102,8 +114,7 @@ import { Button } from 'react-bootstrap';
     const [showSuccess, setShowSuccess] = useState(false);
     const [messageText, setMessageText] = useState('');
     const [messageType, setMessageType] = useState(''); 
-    const [modalShow, setModalShow] = useState(false);
-    const [selectedEmployee, setSelectedEmployee] = useState(null);
+    const [modalShow, setModalShow] = useState(false);  
     const [employees, setEmployees] = useState([]);
     const [rowData, setRowData] = useState();
     const [makeEditButtonDisable, setMakeEditButtonDisable] = useState(true);
@@ -116,16 +127,26 @@ import { Button } from 'react-bootstrap';
     const currentItems = items.slice(indexOfFirstItem, indexOfLastItem);
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
   
-          const handleSave = (data) => {
+          const handleSaveEmployee = (data) => {
+           
           setEmployees(prev =>
               selectedEmployee
                 ? prev.map(emp => (emp.email === selectedEmployee.email ? data : emp))
                 : [...prev, data]
             );
             setSelectedEmployee(null);
+             setTimeout(() => {
+               setMessageText('Record has been saved succesfully!')
+               setMessageType('success');
+               setShowSuccess(true);
+            }, 500);
+
+
           };         
     
           const handleCheckboxChange = (data,recordIds) => {
+
+            setSelectedEmployee(data);
             console.log(data);
             setRowData(data);
             console.log(recordIds);  
@@ -157,9 +178,7 @@ import { Button } from 'react-bootstrap';
             if(rowData==undefined)
             {
               alert('Please select record.');
-            }
-            //alert(JSON.stringify( rowData));
-                      
+            }      
           };
 
 
@@ -186,6 +205,16 @@ import { Button } from 'react-bootstrap';
 
           };
 
+           const handleEmployeePopup = (employee=null) => {  
+             setSelectedEmployee(employee);
+             setShowModal(true);
+            // setTimeout(() => {
+            //    setMessageText('User updated succesfully!')
+            //    setMessageType('success');
+            //    setShowSuccess(true);
+            // }, 500);
+          };
+
       const renderPagination = () => {
         let pages = [];
         for (let i = 1; i <= totalPages; i++) {
@@ -205,8 +234,7 @@ import { Button } from 'react-bootstrap';
 
       return (
             <>
-        
-            <div >      
+            <div>      
               <SuccessModal
                 show={showSuccess}
                 onClose={() => setShowSuccess(false)}
@@ -222,10 +250,16 @@ import { Button } from 'react-bootstrap';
             <div id="menubar"  className="container menubar_background_color">               
               <div className=" justify-content-end d-flex gap-2">
              
+                <button  onClick={handleEmployeePopup}  className="btn btn-outline-primary" >
+                  <i className="bi bi-pencil-fill me-1"></i> Add
+                </button>
 
-                <button disabled={makeEditButtonDisable}  onClick={onUserEdit}  className="btn btn-outline-primary" >
+                <button disabled={makeEditButtonDisable}  onClick={handleEmployeePopup}  className="btn btn-outline-primary" >
                   <i className="bi bi-pencil-fill me-1"></i> Edit
                 </button>
+
+              
+
 
                 <button disabled={makeDeleteButtonDisable} className="btn btn-outline-danger" onClick={onDeleteUser} >
                   <i className="bi bi-trash-fill me-1"></i> Delete
@@ -240,6 +274,14 @@ import { Button } from 'react-bootstrap';
           sendDataToParent={handleCheckboxChange}          
           /> 
         </div>
+
+        <EmployeeModal
+        show={showModal}
+        handleClose={() => setShowModal(false)}
+        employeeData={selectedEmployee}
+        onHandleSaveEmployee={handleSaveEmployee}
+        />
+
         </>
       );
     };
