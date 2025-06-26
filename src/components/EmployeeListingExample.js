@@ -170,7 +170,7 @@ import { Button } from 'react-bootstrap';
 
           const onDeleteUser = () => {
             setTimeout(() => {
-               setMessageText('User deleted succesfully!')
+               setMessageText('Record has been deleted succesfully!')
                setMessageType('success');
                setShowSuccess(true);
             }, 500);
