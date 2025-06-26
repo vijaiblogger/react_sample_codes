@@ -15,7 +15,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import './globaltheme/blue.css';
 import Employee from './components/Employee';
 import Pgtest from './components/Pgtest';
-import PaginationExample   from './components/PaginationExample';
+import EmployeeListingExample   from './components/EmployeeListingExample';
 //import ExportToExcel from './components/ExcelExport';
 import ExcelExport from './components/ExcelExport';
 import PopupEditDelete from './util/PopupEditDelete';
@@ -62,7 +62,7 @@ function App(props) {
           <NavLink to="/members" className="nav-link" activeClassName="active"><i class="bi bi-person-circle"></i> {collapsed ? '' : 'Members'}</NavLink>
           <NavLink to="/employee" className="nav-link" activeClassName="active"><i class="bi bi-person-circle"></i> {collapsed ? '' : 'Employee'}</NavLink>
           <NavLink to="/excelExport" className="nav-link" activeClassName="active"><i class="bi bi-person-circle"></i> {collapsed ? '' : 'Export Employee'}</NavLink>
-        <NavLink to="/paginationExample" className="nav-link" activeClassName="active"><i class="bi bi-person-circle"></i> {collapsed ? '' : 'Employee Pagination'}</NavLink>
+        <NavLink to="/EmployeeListingExample" className="nav-link" activeClassName="active"><i class="bi bi-person-circle"></i> {collapsed ? '' : 'Employee Lists'}</NavLink>
         <NavLink to="/PopupEditDelete" className="nav-link" activeClassName="active"><i class="bi bi-person-circle"></i> {collapsed ? '' : ' PopupEditDelete'}</NavLink>
        <NavLink to="/pgtest" className="nav-link" activeClassName="active"><i class="bi bi-person-circle"></i> {collapsed ? '' : ' pgtest'}</NavLink>
        
@@ -82,7 +82,7 @@ function App(props) {
             <Route path="/employee" element={<Employee />} />   
             <Route path="/members" element={<Members />} />   
             <Route path="/excelExport" element={<ExcelExport />} />  
-            <Route path="/paginationExample" element={<PaginationExample />} /> 
+            <Route path="/employeeListingExample" element={<EmployeeListingExample />} /> 
             <Route path="/pgtest" element={<Pgtest />} />  
             <Route path="/popupEditDelete" element={<PopupEditDelete />} /> 
             <Route path="/usertable" element={<UserTable />} />   

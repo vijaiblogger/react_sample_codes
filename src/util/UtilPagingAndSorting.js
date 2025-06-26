@@ -1,9 +1,7 @@
           import React, { useState ,useEffect } from "react";
           import "bootstrap/dist/css/bootstrap.min.css";
-          import 'bootstrap-icons/font/bootstrap-icons.css';    
-          // import Menubar from "./Menubar";     
-
-          const UtilPagingAndSorting = ({ data, itemsPerPage = 5,displayCheckbox=false,sendDataToParent,setItem}) => {          
+          import 'bootstrap-icons/font/bootstrap-icons.css';  
+      const UtilPagingAndSorting = ({ data, itemsPerPage = 5,displayCheckbox=false,sendDataToParent,setItem}) => {          
             const [currentPage, setCurrentPage] = useState(1);
             const [sortField, setSortField] = useState(null);
             const [sortOrder, setSortOrder] = useState("asc");
@@ -14,11 +12,6 @@
               const bVal = b[sortField]?.toString().toLowerCase() ?? "";
               return sortOrder === "asc" ? (aVal > bVal ? 1 : -1) : (aVal < bVal ? 1 : -1);
             });
-
-            // const handleChange = () => {
-            // sendDataToParent('Hello from Child!');
-            // };
-
 
             // 📄 Paginate
             const indexOfLast = currentPage * itemsPerPage;
@@ -87,15 +80,10 @@
                     alert("Editing ID: " + selectedIds[0]);
                   } else {
                     alert("Please select only 1 item to edit.");
-                  }
-                  
-                };
+                  }                  
+                };                    
 
-
-                    
-
-                // 🧠 Delete action
-              
+                // 🧠 Delete action              
                   const deleteSelectedUsers = (selectedIds) => {
                   const confirmed = window.confirm("Are you sure you want to delete selected users?");
                   if (confirmed) {
@@ -110,28 +98,15 @@
                   }
                   setSelectedIds(!selectedIds);
                 };
-              
-                // const handleDelete = () => {
-                //   if (selectedIds.length === 0) {
-         				//   alert("Please select at least one row to delete.");
-                //     return;
-                //   }
-
-                //   // onDeleteSelected(selectedIds);
-                // };
-              
-
 
             return (
-              <>
-                    
+              <>                   
 
-            {/* {displayMenubar &&<Menubar onButtonClick={handleEdit} onDelete={handleDelete}/>} */}
+              {/* {displayMenubar &&<Menubar onButtonClick={handleEdit} onDelete={handleDelete}/>} */}
 
               <div className="container mt-4">
                 <table className="table table-bordered table-hover">
-                  <thead className="table-primary">
-                    
+                  <thead className="table-primary">                    
                     <tr>
                       {displayCheckbox && <th className="table_header_background_color"></th>}
                       {columnKeys.map((key) => (
@@ -141,16 +116,13 @@
                           style={{ cursor: "pointer" }}>
                           {key.toLocaleUpperCase()}
                           {sortField === key ? (sortOrder === "asc" ? " ▲" : " ▼") : ""}
-                      </th>   
-                                
-                      ))}
-                      
+                      </th>    
+                      ))}                      
                     </tr>
                   </thead>
                   <tbody>
                     {currentData.map((row, rowIndex) => (
                       <tr key={rowIndex}>
-
                       {displayCheckbox && 
                       <td>
                         <input
@@ -159,11 +131,10 @@
                         onChange={(event) => handleCheckboxChange(event,row.id)}
                         />
                       </td>
-                      }                    
-
-                        {columnKeys.map((key) => (
-                          <td  key={key}>{row[key]}</td>
-                        ))}
+                      }
+                      {columnKeys.map((key) => (
+                        <td  key={key}>{row[key]}</td>
+                      ))}
                       </tr>
                     ))}
                   </tbody>
