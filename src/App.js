@@ -19,6 +19,7 @@ import PaginationExample   from './components/PaginationExample';
 //import ExportToExcel from './components/ExcelExport';
 import ExcelExport from './components/ExcelExport';
 import PopupEditDelete from './util/PopupEditDelete';
+import UserTable from './components/UserTable';
 
 // import UtilPagingAndSorting from './util/UtilPagingAndSorting';
 import UtilPagingAndSorting from './util/UtilPagingAndSorting';
@@ -64,6 +65,8 @@ function App(props) {
         <NavLink to="/paginationExample" className="nav-link" activeClassName="active"><i class="bi bi-person-circle"></i> {collapsed ? '' : 'Employee Pagination'}</NavLink>
         <NavLink to="/PopupEditDelete" className="nav-link" activeClassName="active"><i class="bi bi-person-circle"></i> {collapsed ? '' : ' PopupEditDelete'}</NavLink>
        <NavLink to="/pgtest" className="nav-link" activeClassName="active"><i class="bi bi-person-circle"></i> {collapsed ? '' : ' pgtest'}</NavLink>
+       
+       <NavLink to="/userTable" className="nav-link" activeClassName="active"><i class="bi bi-person-circle"></i> {collapsed ? '' : ' userTable'}</NavLink>
        {/* <NavLink to="/utilPagingAndSorting" className="nav-link" activeClassName="active"><i class="bi bi-person-circle"></i> {collapsed ? '' : ' UtilPagingAndSorting'}</NavLink> */}
        
         </Nav>
@@ -81,7 +84,8 @@ function App(props) {
             <Route path="/excelExport" element={<ExcelExport />} />  
             <Route path="/paginationExample" element={<PaginationExample />} /> 
             <Route path="/pgtest" element={<Pgtest />} />  
-            <Route path="/popupEditDelete" element={<PopupEditDelete />} />   
+            <Route path="/popupEditDelete" element={<PopupEditDelete />} /> 
+            <Route path="/usertable" element={<UserTable />} />   
             {/* <Route path="/utilPagingAndSorting" element={<UtilPagingAndSorting data={props.users} itemsPerPage={4} />} />  */}
             
                            
