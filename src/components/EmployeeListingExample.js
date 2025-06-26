@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import UtilPagingAndSorting from "../util/UtilPagingAndSorting";
 import SuccessModal from "../util/SuccessModal";
-//import EmployeeModal from "./util/EmployeeModal";
-import EmployeeModal from '../util/EmployeeModal'
+//import EmployeeModal from "./com/EmployeeModal";
+import EmployeeModal from '../components/employee/EmployeeModal'
 import { Button } from 'react-bootstrap';
 
 
