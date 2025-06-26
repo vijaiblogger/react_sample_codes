@@ -144,17 +144,14 @@ import { Button } from 'react-bootstrap';
 
           };         
     
-          const handleCheckboxChange = (data,recordIds) => {
-
-            setSelectedEmployee(data);
-            console.log(data);
-            setRowData(data);
-            console.log(recordIds);  
+          const handleCheckboxChange = (data,recordIds) => {   
+            alert(data);     
+            debugger;   
+              setSelectedEmployee(data);
               if(recordIds.length==0)
-              {
+              {              
               setMakeEditButtonDisable(true);
               setMakeDeleteButtonDisable(true);
-
               }
               else if(recordIds.length==1)
               {
@@ -166,6 +163,7 @@ import { Button } from 'react-bootstrap';
                 setMakeDeleteButtonDisable(false);
                 setMakeEditButtonDisable(true);
               }
+               
           };        
 
           const onDeleteUser = () => {

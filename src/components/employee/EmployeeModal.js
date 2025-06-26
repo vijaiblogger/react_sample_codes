@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 
-const EmployeeModal = ({ show, handleClose, employeeData, onHandleSaveEmployee }) => {
+const EmployeeModal = ({ show, handleClose, employeeData=null, onHandleSaveEmployee }) => {
   const [employee, setEmployee] = useState({
     name: '',
     email: '',
@@ -28,9 +28,9 @@ const EmployeeModal = ({ show, handleClose, employeeData, onHandleSaveEmployee }
   };
 
   return (
-    <Modal show={show} onHide={handleClose}>
+    <Modal show={show} onHide={handleClose}>      
       <Modal.Header closeButton>
-        <Modal.Title>{employeeData ? 'Edit Employee' : 'Add Employee'}</Modal.Title>
+        <Modal.Title><h1>{employee.email}</h1> {employeeData==null  ? 'Edit Employee' : 'Add Employee'}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form>
